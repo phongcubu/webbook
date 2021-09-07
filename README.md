@@ -11,3 +11,4 @@ Các bước sau khi lấy project laravel trên github về :
 +php artisan migrate
  hê lô anh 
 
+hello cac ban
