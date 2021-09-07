@@ -9,5 +9,5 @@ Các bước sau khi lấy project laravel trên github về :
 -chay tiếp 2 lênh này 
 +php artisan key:generate
 +php artisan migrate
-
+ hê lô anh 
 
