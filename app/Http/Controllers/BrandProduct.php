@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 class BrandProduct extends Controller
 {
     // hàm đăng nhập admin
+    // hế lô anh ae
     public function AuthLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id)
