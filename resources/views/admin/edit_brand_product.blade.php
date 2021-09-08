@@ -17,7 +17,7 @@
                     ?>
                     @foreach ($edit_brand_product as $key =>$edit_value )
                         
-                    @endforeach
+                  
                     <div class="position-center">
                         <form role="form" action="{{URL::to('update-brand-product/'.$edit_value->brand_id)}}" method="POST">
                             {{ csrf_field() }}
@@ -34,8 +34,10 @@
                         <button type="submit" name="add_brand_product" class="btn btn-info">Thêm danh mục</button>
                     </form>
                     </div>
+                    @endforeach
 
                 </div>
+               
             </section>
 
     </div>
