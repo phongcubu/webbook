@@ -12,4 +12,5 @@ Các bước sau khi lấy project laravel trên github về :
  hê lô anh 
 
 hello cac ban
-aloo
+alo
+helo phong
