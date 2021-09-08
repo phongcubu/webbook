@@ -16,7 +16,7 @@
                         }
                     ?>
                     <div class="position-center">
-                        <form role="form" action="{{URL::to('save-product')}}" method="POST">
+                        <form role="form" action="{{URL::to('save-product')}}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên sản phẩm</label>
@@ -45,16 +45,18 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Danh muc sản phẩm</label>
-                            <select name="product_status" class="form-control input-lg m-bot15">
-                                <option value="0">sách giáo dục </option>
-                                <option value="1">sách cho mẹ và bé</option>
+                            <select name="product_cate" class="form-control input-lg m-bot15">
+                                @foreach($cate_product as $key => $cate)
+                                <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Thương hiểu sản phẩm</label>
-                            <select name="product_status" class="form-control input-lg m-bot15">
-                                <option value="0">aa </option>
-                                <option value="1">bb</option>
+                            <select name="product_brand" class="form-control input-lg m-bot15">
+                                @foreach($brand_product as $key => $brand)
+                                <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
