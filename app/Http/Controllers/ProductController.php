@@ -1,18 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
-
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 session_start();
-class BrandProduct extends Controller
+class ProductController extends Controller
 {
-    // hàm đăng nhập admin
-    // hế lô anh ae
     public function AuthLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id)
@@ -21,43 +16,42 @@ class BrandProduct extends Controller
         }
         else
         {
-           return Redirect::to('admin-login')->send();
-           
+            return Redirect::to('admin-login')->send();
         }
 
     }
      //-- hàm xử lí thêm thương hiệu sản phẩm
-     public function add_brand_product(){
+    public function add_product(){
         $this->AuthLogin();
-        return view('admin.add_brand_product');
+        return view('admin.add_product');
 
     }
 
     // --hàm xử lí liệt kê ra thương hiệu sản phảm
-    public function all_brand_product(){
+    public function all_product(){
         $this->AuthLogin();
         // lấy data từ bảng 
-        $all_brand_product = DB::table('tbl_brand')->get();
+        $all_product = DB::table('tbl_product')->get();
         // đưa ra hiển thị  với dữ liệu lấy được
-        $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product',$all_brand_product);
-        return view('admin_layout')->with('admin.all_brand_product',$manager_brand_product);
+        $manager_product = view('admin.all_product')->with('all_product',$all_product);
+        return view('admin_layout')->with('admin.all_product',$manager_product);
     }
 
     //-- hàm xử lí lưu thương hiệu sản phẩm
-    public function save_brand_product(Request $request){
+    public function save_product(Request $request){
         $this->AuthLogin();
     // lấy dữ liệu từ form
         // khai báo biến data để lưu dữ liệu
         $data = array();
-        // tên lấy theo cột dữ liệu = tên lấy theo name ở 'add_brand_prodcut' view.
-        $data['brand_name'] = $request->brand_product_name;
-        $data['brand_desc'] = $request->brand_product_desc;
-        $data['brand_status'] = $request->brand_product_status;
+        // tên lấy theo cột dữ liệu = tên lấy theo name ở 'add_product_prodcut' view.
+        $data['product_name'] = $request->product_name;
+        $data['product_desc'] = $request->product_desc;
+        $data['product_status'] = $request->product_status;
 
     // lưu dữ liệu vào database
-        DB::table('tbl_brand')->insert($data);
+        DB::table('tbl_product')->insert($data);
         Session::put('message', " thêm thương hiệu  thành công!");
-        return Redirect::to("add-brand-product");
+        return Redirect::to("add-product");
 
     }
 
@@ -103,15 +97,12 @@ class BrandProduct extends Controller
             // tên lấy theo cột dữ liệu = tên lấy theo name ở 'add_brand_prodcut' view.
             $data['brand_name'] = $request->brand_product_name;
             $data['brand_desc'] = $request->brand_product_desc;
-           
-    
         // lưu dữ liệu vào database
             DB::table('tbl_brand')->where('brand_id',$brand_product_id)->update($data);
             Session::put('message', " cập nhật thương hiệu thành công!");
             return Redirect::to("all-brand-product");
     
         }
-    
     // --- hàm xóa thương hiệu sản phẩm 
     public function deletee_brand_product($brand_product_id){
         $this->AuthLogin();
@@ -121,3 +112,4 @@ class BrandProduct extends Controller
     
         }
 }
+?>

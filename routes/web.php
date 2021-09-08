@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryProduct;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandProduct;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,3 +75,14 @@ Route::post('update-brand-product/{brand_product_id}',[BrandProduct::class, 'upd
 Route::get('edit-brand-product/{brand_product_id}',[BrandProduct::class, 'edit_brand_product'])->name('edit-brand-product');
 // xóa danh mục sản phẩm trong liệt kê danh mục
 Route::get('delete-brand-product/{brand_product_id}',[BrandProduct::class, 'deletee_brand_product'])->name('delete-brand-product');
+
+
+// -----------Product---------
+Route::get('add-product/', [ProductController::class, 'add_product'])->name('add-product');
+Route::get('all-product/',[ProductController::class, 'all_product'])->name('all-product');
+Route::get('active-product/{product_id}',[ProductController::class, 'active_product'])->name('active-product');
+Route::get('unactive-product/{product_id}',[ProductController::class, 'unactive_product'])->name('unactive-product');
+Route::post('save-product/',[ProductController::class, 'sav_product'])->name('save-product');
+Route::post('update-product/{product_id}',[ProductController::class, 'update_product'])->name('update-product');
+Route::get('edit-product/{product_id}',[ProductController::class, 'edit_product'])->name('edit-product');
+Route::get('delete-product/{product_id}',[ProductController::class, 'deletee_product'])->name('delete-product');

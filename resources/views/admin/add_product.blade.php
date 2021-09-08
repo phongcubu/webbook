@@ -1,0 +1,76 @@
+@extends('admin_layout')
+@section('admin_content')
+<div class="form-w3layouts">
+<div class="row">
+    <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Thêm Danh Mục Sản Phẩm
+                </header>
+                <div class="panel-body">
+                    <?php
+                        $message = Session::get('message');
+                        if($message){
+                            echo $message;
+                            Session::put("message",null);
+                        }
+                    ?>
+                    <div class="position-center">
+                        <form role="form" action="{{URL::to('save-product')}}" method="POST">
+                            {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tên sản phẩm</label>
+                            <input type="text" class="form-control" name="product_name" id="exampleInputEmail1" 
+                            placeholder="Tên sản phẩm">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Giá sản phẩm</label>
+                            <input type="text" class="form-control" name="product_price" id="exampleInputEmail1" 
+                            placeholder="Giá sản phẩm">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
+                            <input type="file" class="form-control" name="product_image" id="exampleInputEmail1" 
+                            placeholder="Hình ảnh sản phẩm">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Mô Tả sản phẩm</label>
+                            <textarea style="resize: none" rows="8" name="product_desc" class="form-control" id="exampleInputPassword1" 
+                            placeholder="Mô Tả sản phẩm"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nội dung sản phẩm</label>
+                            <textarea style="resize: none" rows="8" name="product_content" class="form-control" id="exampleInputPassword1" 
+                            placeholder="Nội dung sản phẩm"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Danh muc sản phẩm</label>
+                            <select name="product_status" class="form-control input-lg m-bot15">
+                                <option value="0">sách giáo dục </option>
+                                <option value="1">sách cho mẹ và bé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Thương hiểu sản phẩm</label>
+                            <select name="product_status" class="form-control input-lg m-bot15">
+                                <option value="0">aa </option>
+                                <option value="1">bb</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Hiển thị</label>
+                            <select name="product_status" class="form-control input-lg m-bot15">
+                                <option value="0">ẩn </option>
+                                <option value="1">hiện</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" name="update_product" class="btn btn-info">Thêm sản phẩm</button>
+                    </form>
+                    </div>
+                </div>
+            </section>
+    </div>
+</div>
+</div>
+@endsection

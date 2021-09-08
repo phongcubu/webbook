@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
-
+session_start();
 class CategoryProduct extends Controller
 {
     // hàm đăng nhập admin

@@ -5,7 +5,7 @@
     <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                   Thêm Danh Mục Sản Phẩm
+                    Thêm Danh Mục Sản Phẩm
                 </header>
                 <div class="panel-body">
                     <?php
@@ -27,11 +27,10 @@
                             <textarea style="resize: none" rows="8" name="category_product_desc" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
                         </div>
                         <div class="form-group">
-                           
                             <select name="category_product_status" class="form-control input-lg m-bot15">
                                 <option value="0">ẩn </option>
                                 <option value="1">hiện</option>
-                              
+                        
                             </select>
                         </div>
                         
@@ -43,7 +42,3 @@
             </section>
 
     </div>
- 
-</div>
-</div>
-@endsection
