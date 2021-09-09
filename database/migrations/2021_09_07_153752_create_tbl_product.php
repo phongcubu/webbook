@@ -22,6 +22,7 @@ class CreateTblProduct extends Migration
             $table->string('product_price');
             $table->string('product_image');
             $table->integer('product_status');
+            $table->string('product_name');
             $table->timestamps();
         });
     }

@@ -9,6 +9,7 @@
                 </header>
                 <div class="panel-body">
                     <?php
+                    use Illuminate\Support\Facades\Session;
                         $message = Session::get('message');
                         if($message){
                             echo $message;
@@ -34,7 +35,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
                                     <input type="file" class="form-control" name="product_image" id="exampleInputEmail1">
-                                    <img src="{{URL::to('public/uploads/product'.$pro->product_image)}}" height="100" width="100">
+                                    <img src="{{URL::to('public/uploads/product/'.$pro->product_image)}}" height="100" width="100">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô Tả sản phẩm</label>

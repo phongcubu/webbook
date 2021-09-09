@@ -71,7 +71,7 @@ class ProductController extends Controller
     // lưu dữ liệu vào database
         DB::table('tbl_product')->insert($data);
         Session::put('message', " thêm sản phẩm thành công!");
-        return Redirect::to("add-product");
+        return Redirect::to("all-product");
 
     }
 
@@ -131,8 +131,8 @@ class ProductController extends Controller
                 $new_image = $name_image.rand(0,99).".".$get_image->getClientOriginalExtension();
                 $get_image-> move('public/uploads/product',$new_image);
                 $data['product_image'] = $new_image;
-                DB::table('tbl_product')->insert($data);
-                Session::put('message', " thêm cập nhật thành công!");
+                DB::table('tbl_product')->where('product_id',$product_id)->update($data);
+                Session::put('message', "cập nhật thành công!");
                 return Redirect::to('add-product');
             }
         // lưu dữ liệu vào database

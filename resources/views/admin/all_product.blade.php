@@ -6,6 +6,7 @@
         Liệt Kê Sản Phẩm
         </div>
     <?php
+    use Illuminate\Support\Facades\Session;
         $message = Session::get('message');
         if($message){
             echo $message;
@@ -81,7 +82,7 @@
                     <a href="{{URL::to('edit-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
                         <i class="fa fa-pencil-square-o text-success text-active"></i>
                     </a>
-                    <a  onclick="return confirm('bạn chắc chắn muốn xóa danh mục này chứ ?')" href="{{URL::to('delete-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
+                    <a  onclick="return confirm('bạn chắc chắn muốn xóa sản phẩm này không ?')" href="{{URL::to('delete-product/'.$pro->product_id)}}" class="active styling-edit" ui-toggle-class="">
                         <i class="fa fa-times text-danger text"></i>
                     </a>
                 </td>
