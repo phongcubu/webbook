@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryProduct;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandProduct;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeControllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,11 +17,15 @@ use App\Http\Controllers\ProductController;
 |
 */
 // ---------frontend----------
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+//Fronend
+Route::get('/', [HomeControllers ::class, 'home']);
+Route::get('trang-chu/', [HomeControllers ::class, 'home'])->name('trang-chu');
+//Danh muc san pham
+Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
+Route::get('thuong-hieu-san-pham/{brand_id}', [BrandProduct ::class, 'show_brand_home']);
 //----------BACKEND(dashboard)---------------
 
 //vào trang login đăng nhập
