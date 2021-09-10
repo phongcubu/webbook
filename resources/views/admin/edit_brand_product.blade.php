@@ -15,7 +15,7 @@
                             Session::put("message",null);
                         }
                     ?>
-                    @foreach ($edit_brand_product as $key =>$edit_value )
+                    @foreach ($edit_brand_product as $key =>$edit_value)
                         
                   
                     <div class="position-center">
@@ -29,19 +29,19 @@
                             <label for="exampleInputPassword1">Mô Tả Danh Mục</label>
                             <textarea style="resize: none" value="{{$edit_value->brand_desc}}" rows="8" name="brand_product_desc" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
                         </div>
-                     
                         
                         <button type="submit" name="add_brand_product" class="btn btn-info">Thêm danh mục</button>
                     </form>
                     </div>
+<<<<<<< HEAD
                     @endforeach
 
+=======
+>>>>>>> c22c9500f9383e45cdde71b7f4fe47781475e671
                 </div>
                
             </section>
-
     </div>
- 
 </div>
 </div>
 @endsection

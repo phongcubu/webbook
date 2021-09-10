@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+session_start();
 class BrandProduct extends Controller
 {
     // hàm đăng nhập admin
@@ -20,13 +21,13 @@ class BrandProduct extends Controller
         }
         else
         {
-           return Redirect::to('admin-login')->send();
-           
+            return Redirect::to('admin-login')->send();
+            
         }
 
     }
      //-- hàm xử lí thêm thương hiệu sản phẩm
-     public function add_brand_product(){
+    public function add_brand_product(){
         $this->AuthLogin();
         return view('admin.add_brand_product');
 
@@ -102,7 +103,6 @@ class BrandProduct extends Controller
             // tên lấy theo cột dữ liệu = tên lấy theo name ở 'add_brand_prodcut' view.
             $data['brand_name'] = $request->brand_product_name;
             $data['brand_desc'] = $request->brand_product_desc;
-           
     
         // lưu dữ liệu vào database
             DB::table('tbl_brand')->where('brand_id',$brand_product_id)->update($data);
