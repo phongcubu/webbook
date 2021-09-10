@@ -59,6 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <img alt="" src="{{asset('public/backend/images/2.png')}}">
                 <span class="username">
 					<?php
+					use Illuminate\Support\Facades\Session;
 					//  hiển thị tên người đăng nhập
 						$name = Session::get('admin_name');
 						if($name)
@@ -77,7 +78,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul>
         </li>
         <!-- user login dropdown end -->
-       
     </ul>
     <!--search & user info end-->
 </div>
@@ -119,9 +119,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         
                     </ul>
                 </li>
-              
+				<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Sản phẩm</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('add-product')}}">Thêm sản phẩm</a></li>
+						<li><a href="{{URL::to('all-product')}}">Liệt kê sản phẩm</a></li>
+                        
+                    </ul>
+                </li>
             </ul>    
-		        </div>
+		</div>
         <!-- sidebar menu end-->
     </div>
 </aside>
@@ -130,14 +140,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--main content start-->
 <section id="main-content">
 	<section class="wrapper">
-	@yield('admin_content')
- <!-- footer -->
-		  <div class="footer">
+		@yield('admin_content')
+<!-- footer -->
+		<div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2021 Phong-Sơn-Phương. All rights reserved | Design by <a href="">D14TTNT&TGMT</a></p>
+			<p>© 2021 Phong-Sơn-Phương. All rights reserved | Design by <a href="">D14TTNT&TGMT</a></p>
 			</div>
-		  </div>
-  <!-- / footer -->
+		</div>
+<!-- / footer -->
 	</section>
 <!--main content end-->
 </section>
@@ -152,18 +162,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
 	$(document).ready(function() {
 		//BOX BUTTON SHOW AND CLOSE
-	   jQuery('.small-graph-box').hover(function() {
-		  jQuery(this).find('.box-button').fadeIn('fast');
-	   }, function() {
-		  jQuery(this).find('.box-button').fadeOut('fast');
-	   });
-	   jQuery('.small-graph-box .box-close').click(function() {
-		  jQuery(this).closest('.small-graph-box').fadeOut(200);
-		  return false;
-	   });
-	   
+		jQuery('.small-graph-box').hover(function() {
+		jQuery(this).find('.box-button').fadeIn('fast');
+		}, function() {
+		jQuery(this).find('.box-button').fadeOut('fast');
+		});
+		jQuery('.small-graph-box .box-close').click(function() {
+		jQuery(this).closest('.small-graph-box').fadeOut(200);
+		return false;
+		});
 	    //CHARTS
-	    function gd(year, day, month) {
+		function gd(year, day, month) {
 			return new Date(year, month - 1, day).getTime();
 		}
 		
@@ -200,8 +209,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			hideHover: 'auto',
 			resize: true
 		});
-		
-	   
 	});
 	</script>
 <!-- calendar -->
