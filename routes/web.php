@@ -26,6 +26,7 @@ Route::get('trang-chu/', [HomeControllers ::class, 'home'])->name('trang-chu');
 //Danh muc san pham
 Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
 Route::get('thuong-hieu-san-pham/{brand_id}', [BrandProduct ::class, 'show_brand_home']);
+Route::get('chi-tiet-san-pham/{product_id}', [ProductController ::class, 'details_product']);
 //----------BACKEND(dashboard)---------------
 
 //vào trang login đăng nhập
