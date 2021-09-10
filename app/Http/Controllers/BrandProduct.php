@@ -119,4 +119,14 @@ class BrandProduct extends Controller
             return Redirect::to("all-brand-product");
     
         }
+    ////kết thúc hàm admin page
+    public function show_brand_home($brand_id){
+        $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
+        $brand_by_id = DB::table('tbl_product')->join('tbl_brand','tbl_product.brand_id','=',
+        'tbl_brand.brand_id')->where('tbl_product.brand_id',$brand_id)->get();
+        $brand_name = DB::table('tbl_brand')->where('tbl_brand.brand_id',$brand_id)->limit(1)->get();
+        return view('pages.brand.show_brand')->with('category',$cate_product)->with('brand',$brand_product)
+        ->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);
+    }
 }
