@@ -96,6 +96,8 @@ Route::post('update-product/{product_id}',[ProductController::class, 'update_pro
 Route::get('edit-product/{product_id}',[ProductController::class, 'edit_product'])->name('edit-product');
 Route::get('delete-product/{product_id}',[ProductController::class, 'deletee_product'])->name('delete-product');
 
-// -----Carrt
+// -----Cart
 Route::post('save-cart/',[CartController::class, 'save_cart'])->name('save-cart');
+Route::post('update-cart-quantity/',[CartController::class, 'update_cart_quantity'])->name('update-cart-quantity');
 Route::get('show-cart/',[CartController::class, 'show_cart'])->name('show-cart');
+Route::get('delete-to-cart/{rowId}',[CartController::class, 'delete_to_cart'])->name('delete-to-cart');

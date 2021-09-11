@@ -28,7 +28,7 @@ class CartController extends Controller
 
         // them vao cart
         Cart::add($data);
-
+        
         return Redirect::to('show-cart');
         
         
@@ -40,6 +40,18 @@ class CartController extends Controller
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
         return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product);
+    }
+    public function delete_to_cart($rowId)
+    {
+        Cart::update($rowId,0);
+        return Redirect::to('show-cart');
+
+    }
+    public function update_cart_quantity(Request $request){
+        $rowId=$request->rowId_cart;
+        $qty=$request->cart_quantity;
+        Cart::update($rowId,$qty);
+        return Redirect::to('show-cart');
     }
 }
 ?>
