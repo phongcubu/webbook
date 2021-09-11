@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandProduct;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeControllers;
+use App\Http\Controllers\CartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,3 +95,7 @@ Route::post('update-product/{product_id}',[ProductController::class, 'update_pro
 
 Route::get('edit-product/{product_id}',[ProductController::class, 'edit_product'])->name('edit-product');
 Route::get('delete-product/{product_id}',[ProductController::class, 'deletee_product'])->name('delete-product');
+
+// -----Carrt
+Route::post('save-cart/',[CartController::class, 'save_cart'])->name('save-cart');
+Route::get('show-cart/',[CartController::class, 'show_cart'])->name('show-cart');
