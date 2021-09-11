@@ -38,8 +38,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
-        Admin
+    <a href="{{URL::to('trang-chu')}}" class="logo">
+        PSP-BOOK
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>

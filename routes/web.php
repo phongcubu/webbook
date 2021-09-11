@@ -16,19 +16,17 @@ use App\Http\Controllers\HomeControllers;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// ---------frontend----------
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 //Fronend
 Route::get('/', [HomeControllers ::class, 'home']);
 Route::get('trang-chu/', [HomeControllers ::class, 'home'])->name('trang-chu');
+
 //Danh muc san pham
 Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
 Route::get('thuong-hieu-san-pham/{brand_id}', [BrandProduct ::class, 'show_brand_home']);
 Route::get('chi-tiet-san-pham/{product_id}', [ProductController ::class, 'details_product']);
-//----------BACKEND(dashboard)---------------
 
+//----------BACKEND(dashboard)---------------
 //vào trang login đăng nhập
 Route::get('admin-login/', [AdminController::class, 'index'])->name('admin-login');
 // vào trang chủ bảng điều khiển
@@ -86,9 +84,12 @@ Route::get('delete-brand-product/{brand_product_id}',[BrandProduct::class, 'dele
 // -----------Product---------
 Route::get('add-product/', [ProductController::class, 'add_product'])->name('add-product');
 Route::get('all-product/',[ProductController::class, 'all_product'])->name('all-product');
+
 Route::get('active-product/{product_id}',[ProductController::class, 'active_product'])->name('active-product');
 Route::get('unactive-product/{product_id}',[ProductController::class, 'unactive_product'])->name('unactive-product');
+
 Route::post('save-product/',[ProductController::class, 'save_product'])->name('save-product');
 Route::post('update-product/{product_id}',[ProductController::class, 'update_product'])->name('update-product');
+
 Route::get('edit-product/{product_id}',[ProductController::class, 'edit_product'])->name('edit-product');
 Route::get('delete-product/{product_id}',[ProductController::class, 'deletee_product'])->name('delete-product');

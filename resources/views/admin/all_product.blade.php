@@ -67,12 +67,12 @@
                             if($pro->product_status == 1)
                             {
                             ?>   
-                            <a href="{{URL::to('unactive-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
+                            <a href="{{URL::to('unactive-product/'.$pro->product_id)}}"><span class=" fa fa-eye" style="font-size: 25px; color:green"></span></a>
                             <?php   
                             }
                             else {
                             ?>   
-                                <a  href="{{URL::to('active-product/'.$pro->product_id)}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
+                                <a  href="{{URL::to('active-product/'.$pro->product_id)}}"><span class=" fa fa-eye-slash" style="font-size: 25px; color:red"></span></a>
                             <?php   
                             }                        
                             ?>

@@ -11,9 +11,11 @@
                 <div class="single-products">
                     <div class="productinfo text-center">
                         <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" alt="" />
-                        <h2>{{number_format($product->product_price).' '.'VNĐ'}}</h2>
-                        <p>{{$product->product_name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                        <div class="product-detail-text" style=" height: 80px; ">
+                            <p>{{$product->product_name}}</p>
+                        <h2 >{{number_format($product->product_price).' '.'vnđ'}}</h2>
+                        </div>
+                        <a href="#" class="btn btn-default add-to-cart" style="margin: 10px 0px"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                     </div>
                 </div>
                 <div class="choose">

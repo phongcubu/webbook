@@ -12,7 +12,7 @@ session_start();
 class BrandProduct extends Controller
 {
     // hàm đăng nhập admin
-    // hế lô anh ae
+   
     public function AuthLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id)
@@ -119,6 +119,7 @@ class BrandProduct extends Controller
             return Redirect::to("all-brand-product");
     
         }
+
     ////kết thúc hàm admin page
     public function show_brand_home($brand_id){
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
