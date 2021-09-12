@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô Tả sản phẩm</label>
-                                    <textarea style="resize: none" rows="8" name="product_desc" class="form-control" id="exampleInputPassword1" 
+                                    <textarea id="mytextarea" style="resize: none" rows="8" name="product_desc" class="form-control" id="exampleInputPassword1" 
                                     >{{$pro->product_desc}}</textarea>
                                 </div>
                                 <div class="form-group">

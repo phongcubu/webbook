@@ -25,6 +25,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{{asset('public/backend/css/font-awesome.css')}}" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+	tinymce.init({
+	  selector: '#mytextarea'
+	});
+  </script>
 </head>
 <body>
 <div class="log-w3">
