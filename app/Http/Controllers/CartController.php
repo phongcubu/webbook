@@ -28,6 +28,7 @@ class CartController extends Controller
 
         // them vao cart
         Cart::add($data);
+        Cart::setGlobalTax(1);
         
         return Redirect::to('show-cart');
         
@@ -51,6 +52,7 @@ class CartController extends Controller
         $rowId=$request->rowId_cart;
         $qty=$request->cart_quantity;
         Cart::update($rowId,$qty);
+
         return Redirect::to('show-cart');
     }
 }

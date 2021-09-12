@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>PSP-BOOK</title>
     <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/prettyPhoto.css')}}" rel="stylesheet">
@@ -76,7 +76,7 @@
                                 <li><a href="{{URL::to('admin-login')}}"><i class="fa fa-user"></i> Admin</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Yêu Thích</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Giỏ Hàng</a></li>
+                                <li><a href="{{URL::to('show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ Hàng</a></li>
                                 {{-- <li><a href="cart.html"><i class="fa fa-bell"></i> Lịch sử đơn hàng</a></li> --}}
                                 <li><a href="login.html"><i class="fa fa-sign-in"></i>Đăng Nhập</a></li>
                                 <li><a href="login.html"><i class="fa fa-sign-out"></i>Đăng Xuất</a></li>
