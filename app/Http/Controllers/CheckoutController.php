@@ -13,6 +13,18 @@ session_start();
 
 class CheckoutController extends Controller
 {
+    public function AuthLogin(){
+        $admin_id = Session::get('admin_id');
+        if($admin_id)
+        {
+            return Redirect::to('dashboard');
+        }
+        else
+        {
+            return Redirect::to('admin-login')->send();
+        }
+
+    }
     public function login_checkout()
     {   $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
@@ -123,10 +135,23 @@ class CheckoutController extends Controller
         }
         elseif($data['payment_method']==2)
         {
-            echo ' thanh toán tiền mặt';
+            cart::destroy();
+            $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
+            $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
+            return view('pages.checkout.handcash')->with('category',$cate_product)->with('brand',$brand_product);
         }
         //return Redirect::to('payment');
      }
-   
+    public function manage_order( ){
+        $this->AuthLogin();
+        // lấy data từ bảng 
+        $all_order = DB::table('tbl_order')
+        ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
+        ->select('tbl_order.*','tbl_customers.customer_name')
+        ->orderBy('tbl_order.order_id','desc')->get();
+        // đưa ra hiển thị  với dữ liệu lấy được
+        $manager_order = view('admin.manage_order')->with('all_order',$all_order);
+        return view('admin_layout')->with('admin.manage_order',$manager_order);
+    }
   
 }
