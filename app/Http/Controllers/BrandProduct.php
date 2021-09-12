@@ -98,7 +98,6 @@ class BrandProduct extends Controller
     public function update_brand_product(Request $request,$brand_product_id){
         $this->AuthLogin();
         // lấy dữ liệu từ form
-            // khai báo biến data để lưu dữ liệu
             $data = array();
             // tên lấy theo cột dữ liệu = tên lấy theo name ở 'add_brand_prodcut' view.
             $data['brand_name'] = $request->brand_product_name;

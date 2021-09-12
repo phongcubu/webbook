@@ -1,12 +1,21 @@
+
 @extends('welcome')
 @section('content')
-<section id="cart_items">
-    <div class="">
+<section id="cart_items" class="cart_items">
+    <div class="" >
         <div class="breadcrumbs">
             <ol class="breadcrumb">
               <li><a href="{{URL::to('/')}}">Trang chủ</a></li>
-              <li class="active">Giỏ hàng của bạn</li>
+              <li class="active"> Thanh toán</li>
             </ol>
+        </div>
+
+       
+        
+
+    
+        <div class="review-payment">
+            <h2>Xem lại giỏ hàng và thanh toán </h2>
         </div>
         <div class="table-responsive cart_info">
             <?php  
@@ -70,41 +79,21 @@
                 </tbody>
             </table>
         </div>
+        <h4 style="margin-bottom:40px;font-size:20px;">Chọn hình thức thanh toán</h4>
+        <form action="{{URL::to('order-payment-place')}}" method="POST">
+            {{ csrf_field() }}
+            <div class="payment-options">
+                <span>
+                    <label><input type="radio" name="payment_option" value="1"> Trả bằng thẻ ATM</label>
+                </span>
+                <span>
+                    <label><input  type="radio" name="payment_option" value="2"> Trả tiền mặt</label>
+                </span>
+                <input style="margin-top: 0;border-radius:4px" type="submit" value="Đăt hàng" name="send_order_place" class="btn btn-primary btn-small">
+         </div>
+        </form>
+       
+
     </div>
 </section> <!--/#cart_items-->
-<section id="do_action">
-    <div class="container">
-    
-        <div class="row">
-        
-            <div class="col-sm-6">
-                <div class="total_area">
-                    <ul>
-                      <li>Tổng <span>{{Cart::priceTotal(0,',','.').' '.'vnđ'}}</span></li>
-                        <li>Phí vận chuyển <span>{{Cart::tax(0,',','.').' '.'vnđ'}}</span></li>
-                        <li>Thành tiền <span>{{Cart::total(0,',','.').' '.'vnđ'}}</span></li> 
-                    </ul>
-               
-                    <?php
-                    $customer_id = Session::get('customer_id');
-                    if($customer_id!=NULL){ 
-                  ?>
-                   {{-- đăng nhập trước rồi đến trang thanh to --}}
-                 <a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Kiểm Tra Thanh toán</a>
-                 <?php
-             }else{
-                  ?>
-                  {{-- người dùng chưa đăng nhập đẩy về trang login --}}
-                  <a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Kiểm TraThanh toán</a>
-                  <?php 
-              }
-                  ?>
-               
-               
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--/#do_action-->
-
 @endsection

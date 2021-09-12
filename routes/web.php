@@ -7,6 +7,7 @@ use App\Http\Controllers\BrandProduct;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeControllers;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Http\Controllers\CartController;
 //Fronend
 Route::get('/', [HomeControllers ::class, 'home']);
 Route::get('trang-chu/', [HomeControllers ::class, 'home'])->name('trang-chu');
+Route::post('search/', [HomeControllers ::class, 'search'])->name('search');
 
 //Danh muc san pham
 Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
@@ -99,5 +101,17 @@ Route::get('delete-product/{product_id}',[ProductController::class, 'deletee_pro
 // -----Cart
 Route::post('save-cart/',[CartController::class, 'save_cart'])->name('save-cart');
 Route::post('update-cart-quantity/',[CartController::class, 'update_cart_quantity'])->name('update-cart-quantity');
+
 Route::get('show-cart/',[CartController::class, 'show_cart'])->name('show-cart');
 Route::get('delete-to-cart/{rowId}',[CartController::class, 'delete_to_cart'])->name('delete-to-cart');
+
+// ---checkout
+Route::get('login-checkout/',[CheckoutController::class, 'login_checkout'])->name('login-checkout');
+Route::get('logout-checkout/',[CheckoutController::class, 'logout_checkout'])->name('logout-checkout');
+Route::get('checkout/',[CheckoutController::class, 'checkout'])->name('checkout');
+Route::get('payment/',[CheckoutController::class, 'payment'])->name('payment');
+//  lưu dữ liệu form
+Route::post('login-customer/',[CheckoutController::class, 'login_customer'])->name('login-customer'); // đăng nhập người dùng
+Route::post('add-customer',[CheckoutController::class, 'add_customer'])->name('add-customer'); // đăng kí người dùng
+Route::post('save-checkout-customer',[CheckoutController::class, 'save_checkout_customer'])->name('save-checkout-customer');
+Route::post('order-payment-place',[CheckoutController::class, 'order_payment_place'])->name('order-payment-place');

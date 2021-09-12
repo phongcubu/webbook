@@ -25,6 +25,7 @@
 </head><!--/head-->
 
 <body>
+ 
     <header id="header"><!--header-->
         <div class="header_top"><!--header_top-->
             <div class="container">
@@ -73,13 +74,44 @@
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 
-                                <li><a href="{{URL::to('admin-login')}}"><i class="fa fa-user"></i> Admin</a></li>
+                                <li><a href="{{URL::to('admin-login')}}"><i class="fa fa-user"></i>Trang Admin</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Yêu Thích</a></li>
-                                <li><a href="checkout.html"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
+                                <?php 
+                                $customer_id = Session::get('customer_id');
+                                $shipping_id=Session::get('shipping_id');
+                                if ($customer_id != NULL && $shipping_id==NULL) {
+                                 
+                                    ?>
+                                    <li><a href="{{URL::to('checkout')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
+                                 
+                                <?php
+                                }elseif($customer_id != NULL && $shipping_id!=NULL){
+                                    ?>
+                                <li><a href="{{URL::to('payment')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
+                                <?php
+                                }else{
+                                ?>
+                                 <li><a href="{{URL::to('login-checkout')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
+                                <?php
+                                }
+                                ?>
                                 <li><a href="{{URL::to('show-cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ Hàng</a></li>
+                                
                                 {{-- <li><a href="cart.html"><i class="fa fa-bell"></i> Lịch sử đơn hàng</a></li> --}}
-                                <li><a href="login.html"><i class="fa fa-sign-in"></i>Đăng Nhập</a></li>
-                                <li><a href="login.html"><i class="fa fa-sign-out"></i>Đăng Xuất</a></li>
+                                <?php 
+                                $customer_id = Session::get('customer_id');
+                                if ($customer_id != NULL) {
+                                    # code...
+                                    ?>
+                                    <li><a href="{{URL::to('logout-checkout')}}"><i class="fa fa-sign-out"></i>Đăng Xuất</a></li>
+                                <?php
+                                }else{
+                                    ?>
+                                <li><a href="{{URL::to('login-checkout')}}"><i class="fa fa-sign-in"></i>Đăng Nhập</a></li>
+                                <?php
+                                }
+                                ?>
+                                    
                             </ul>
                         </div>
                     </div>
@@ -90,7 +122,7 @@
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="sr-only">Toggle navigation</span>
@@ -113,11 +145,15 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="tìm kiếm"/>
-                        </div>
-                    </div>
+                    <div class="col-sm-4">
+                        <form action="{{URL::to('search')}}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="search_box pull-right">
+                                <input type="text" name="keywords" placeholder="tìm kiếm sản phẩm"/>
+                                <input type="submit" style="width: 27%;border-radius: 7px; margin-top:0px;color:black" value="tìm kiếm" name="search_items" class="btn btn-primary btn-small">
+                            </div>
+                        </div></form>
+                        
                 </div>
             </div>
         </div><!--/header-bottom-->

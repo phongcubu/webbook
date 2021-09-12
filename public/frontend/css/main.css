@@ -1527,7 +1527,7 @@ h2.title {
 #cart_items .cart_info {
     border: 1px solid #E6E4DF;
     margin-bottom: 50px;
-    width: 73%;
+    width: 100%;
 }
 
 #cart_items .cart_info .cart_menu {
