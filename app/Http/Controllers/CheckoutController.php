@@ -25,6 +25,20 @@ class CheckoutController extends Controller
         }
 
     }
+    public function view_order($orderId){
+        $this->AuthLogin();
+        // lấy data từ bảng 
+        $order_by_id = DB::table('tbl_order')
+        ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
+        ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
+        ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+        ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')->first();
+      
+        // đưa ra hiển thị  với dữ liệu lấy được
+       $manager_order_by_id = view('admin.view_order')->with('order_by_id',$order_by_id);
+       return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
+        
+    }
     public function login_checkout()
     {   $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();

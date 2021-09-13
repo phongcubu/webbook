@@ -3,7 +3,90 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Liệt Kê Đơn Hàng
+        Thông tin khách hàng
+      </div>
+      <?php
+      $message = Session::get('message');
+      if($message){
+          echo $message;
+          Session::put("message",null);
+      }
+  ?>
+      
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+            <tr>
+              
+              <th>Tên khách hàng</th>
+              <th>Số điện thoại</th>
+            
+              <th style="width:30px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+              
+            <tr>
+              
+              <td>{{$order_by_id->customer_name}}</td>
+              <td>{{$order_by_id->customer_phone}}</td>
+             
+               
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+    </div>
+  </div>
+  <br>
+  <div class="table-agile-info">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Thông tin vận chuyển
+      </div>
+      <?php
+      $message = Session::get('message');
+      if($message){
+          echo $message;
+          Session::put("message",null);
+      }
+  ?>
+      
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+            <tr>
+              
+              <th>Tên vận chuyển</th>
+              <th>Địa chỉ</th>
+              <th>Số điện thoại</th>
+            
+              <th style="width:30px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+              
+            <tr>
+              
+              <td>{{$order_by_id->shipping_name}}</td>
+              <td>{{$order_by_id->shipping_address}}</td>
+              <td>{{$order_by_id->shipping_phone}}</td>
+               
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    
+    </div>
+  </div>
+  <br><br>
+  <div class="table-agile-info">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Liệt Kê chi tiết đơn hàng
       </div>
       <?php
       $message = Session::get('message');
@@ -42,31 +125,25 @@
                   <input type="checkbox"><i></i>
                 </label>
               </th>
-              <th>Tên người đặt</th>
-              <th>Tổng giá tiền</th>
-              <th>Tình trạng</th>
-              <th>Hiển Thị</th>
+              <th>Tên sản phẩm</th>
+              <th>Số lượng</th>
+              <th>Giá</th>
+              <th>Tổng tiền</th>
             
               <th style="width:30px;"></th>
             </tr>
           </thead>
           <tbody>
-              @foreach ($all_order as $key =>$order)
+            
             <tr>
+                
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>{{$order->customer_name}}</td>
-              <td>{{$order->order_total}}</td>
-              <td>{{$order->order_status}}<td>
-                <td> 
-                    <a href="{{URL::to('view-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
-                  <i class="fa fa-pencil-square-o text-success text-active"></i>
-                </a>
-                <a  onclick="return confirm('bạn chắc chắn muốn xóa đơn hàng không ?')" href="{{URL::to('delete-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
-                  <i class="fa fa-times text-danger text"></i>
-                </a>
-              </td>
+              <td>{{$order_by_id->product_name}}</td>
+              <td>{{$order_by_id->product_sales_quantity}}</td>
+              <td>{{$order_by_id->product_price}}</td>
+              <td>{{$order_by_id->product_price*$order_by_id->product_sales_quantity}}</td>
             </tr>
-            @endforeach
+           
           </tbody>
         </table>
       </div>
