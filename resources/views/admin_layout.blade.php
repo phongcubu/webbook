@@ -111,6 +111,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         
                     </ul>
                 </li>
+				<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Danh mục sản phẩm</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('add-category-product')}}">Thêm danh mục sản phẩm</a></li>
+						<li><a href="{{URL::to('all-category-product')}}">Liệt kê danh mục sản phẩm</a></li>
+                        
+                    </ul>
+                </li>
 
 				<li class="sub-menu">
                     <a href="javascript:;">
@@ -247,13 +258,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //calendar -->
-
-	{{-- // textare ckeditor --}}
+{{-- 
+	// textare ckeditor
 	<script src="{{asset('public/backend/ckeditor/ckeditor.js')}}"></script> 
 	<script>
 		CKEDITOR.replace( 'id1' );
 		CKEDITOR.replace( 'id2' );
-	</script>
+	</script> --}}
 	
 	{{-- preview img --}}
 	<script>

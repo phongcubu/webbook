@@ -57,7 +57,7 @@ class AdminController extends Controller
         // không lấy được thì đẩy cho họ thông báo, đầy về trang đăng nhập 
         else
         {
-        Session::put('message',"mật khẩu hoăc email không chính xác !");
+            Session::put('message',"mật khẩu hoăc email không chính xác !");
             return redirect('admin-login/');
         }
         return view('admin.dashboard');
