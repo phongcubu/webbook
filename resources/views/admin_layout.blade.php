@@ -258,14 +258,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //calendar -->
-{{-- 
-	// textare ckeditor
-	<script src="{{asset('public/backend/ckeditor/ckeditor.js')}}"></script> 
-	<script>
-		CKEDITOR.replace( 'id1' );
-		CKEDITOR.replace( 'id2' );
-	</script> --}}
-	
+
 	{{-- preview img --}}
 	<script>
 		function previewFile(input)
