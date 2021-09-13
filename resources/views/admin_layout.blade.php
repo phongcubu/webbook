@@ -31,6 +31,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
 <script src="{{asset('public/backend/js/raphael-min.js')}}"></script>
 <script src="{{asset('public/backend/js/morris.js')}}"></script>
+
+
+
+
 </head>
 <body>
 <section id="container">
@@ -243,5 +247,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //calendar -->
+
+	{{-- // textare ckeditor --}}
+	<script src="{{asset('public/backend/ckeditor/ckeditor.js')}}"></script> 
+	<script>
+		CKEDITOR.replace( 'id1' );
+		CKEDITOR.replace( 'id2' );
+	</script>
+	
+	{{-- preview img --}}
+	<script>
+		function previewFile(input)
+		{
+			var file =$(".image-preview").get(0).files[0];
+			console.log(file)
+			if(file)
+			{
+				var read = new FileReader();
+				read.onload = function(){
+					$('#previewImg').attr("src", read.result);
+				}
+				read.readAsDataURL(file);
+			}
+		}
+	</script>
 </body>
 </html>
