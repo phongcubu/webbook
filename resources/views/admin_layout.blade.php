@@ -103,11 +103,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
-                        <span>Danh mục sản phẩm</span>
+                        <span>Đơn hàng </span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{URL::to('add-category-product')}}">Thêm danh mục sản phẩm</a></li>
-						<li><a href="{{URL::to('all-category-product')}}">Liệt Kê danh mục sản phẩm</a></li>
+						<li><a href="{{URL::to('manage-order')}}">	Quản lý đơn hàng</a></li>
+						
                         
                     </ul>
                 </li>

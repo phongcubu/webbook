@@ -115,3 +115,6 @@ Route::post('login-customer/',[CheckoutController::class, 'login_customer'])->na
 Route::post('add-customer',[CheckoutController::class, 'add_customer'])->name('add-customer'); // đăng kí người dùng
 Route::post('save-checkout-customer',[CheckoutController::class, 'save_checkout_customer'])->name('save-checkout-customer');
 Route::post('order-payment-place',[CheckoutController::class, 'order_payment_place'])->name('order-payment-place');
+//Order
+Route::get('manage-order/',[CheckoutController::class, 'manage_order'])->name('manage-order');
+Route::get('view-order/{orderId}',[CheckoutController::class, 'view_order'])->name('view-order');

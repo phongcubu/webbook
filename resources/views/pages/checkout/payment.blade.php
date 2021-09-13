@@ -84,10 +84,11 @@
             {{ csrf_field() }}
             <div class="payment-options">
                 <span>
-                    <label><input type="radio" name="payment_option" value="1"> Trả bằng thẻ ATM</label>
+                    <label><input type="checkbox" name="payment_option" value="1"> Trả bằng thẻ ATM</label>
                 </span>
                 <span>
-                    <label><input  type="radio" name="payment_option" value="2"> Trả tiền mặt</label>
+                    <label><input  type="checkbox" name="payment_option" value="2"> Trả tiền mặt</label>
+
                 </span>
                 <input style="margin-top: 0;border-radius:4px" type="submit" value="Đăt hàng" name="send_order_place" class="btn btn-primary btn-small">
          </div>
