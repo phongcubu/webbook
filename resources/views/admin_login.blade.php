@@ -28,9 +28,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
 	tinymce.init({
-	  selector: '#mytextarea'
+	selector: '#mytextarea'
 	});
-  </script>
+</script>
 </head>
 <body>
 <div class="log-w3">
@@ -38,12 +38,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<h2>Đăng Nhập</h2>
 	{{--  hiển thị thông báo nếu sai nhập sai tài khoản mật khẩu --}}
 	<?php
-	 $message = Session::get('message');
-	 if($message )
-	 {
-		 echo $message;
-		 Session::put('message', null);
-	 }
+	$message = Session::get('message');
+	if($message )
+	{
+		echo $message;
+		Session::put('message', null);
+	}
 	?>
 	{{-- end message--}}
 		<form action="{{URL::to('admin-dashbord/')}}" method="post">

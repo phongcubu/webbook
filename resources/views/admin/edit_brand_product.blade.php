@@ -27,7 +27,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô Tả Danh Mục</label>
-                            <textarea name="id1" style="resize: none" value="{{$edit_value->brand_desc}}" rows="8" name="brand_product_desc" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
+                          
+                            <textarea  style="resize: none" rows="8" name="brand_product_desc" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
                         </div>
                         
                         <button type="submit" name="add_brand_product" class="btn btn-info">Thêm danh mục</button>
