@@ -32,11 +32,12 @@ class CategoryProduct extends Controller
     public function all_category_product(){
         $this->AuthLogin();
         // lấy data từ bảng 
-        $all_category_product = DB::table('tbl_category_product')->get();
+        $all_category_product = DB::table('tbl_category_product')->paginate(5);
         // đưa ra hiển thị  với dữ liệu lấy được
         $manager_category_product = view('admin.all_category_product')->with('all_category_product',$all_category_product);
         return view('admin_layout')->with('admin.all_category_product',$manager_category_product);
     }
+    
     //-- hàm xử lí lưu danh mục sản phẩm
     public function save_category_product(Request $request){
         $this->AuthLogin();
@@ -109,7 +110,7 @@ class CategoryProduct extends Controller
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
         $category_by_id = DB::table('tbl_product')->join('tbl_category_product','tbl_product.category_id','=',
-        'tbl_category_product.category_id')->where('tbl_product.category_id',$category_id)->get();
+        'tbl_category_product.category_id')->where('tbl_product.category_id',$category_id)->paginate(3);
         $category_name = DB::table('tbl_category_product')->where('tbl_category_product.category_id',$category_id)->limit(1)->get();
         return view('pages.category.show_category')->with('category',$cate_product)->with('brand',$brand_product)
         ->with('category_by_id',$category_by_id)->with('category_name',$category_name);

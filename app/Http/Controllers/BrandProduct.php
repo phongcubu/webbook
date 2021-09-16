@@ -37,7 +37,7 @@ class BrandProduct extends Controller
     public function all_brand_product(){
         $this->AuthLogin();
         // lấy data từ bảng 
-        $all_brand_product = DB::table('tbl_brand')->get();
+        $all_brand_product = DB::table('tbl_brand')->paginate(5);
         // đưa ra hiển thị  với dữ liệu lấy được
         $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product',$all_brand_product);
         return view('admin_layout')->with('admin.all_brand_product',$manager_brand_product);
@@ -124,7 +124,7 @@ class BrandProduct extends Controller
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
         $brand_by_id = DB::table('tbl_product')->join('tbl_brand','tbl_product.brand_id','=',
-        'tbl_brand.brand_id')->where('tbl_product.brand_id',$brand_id)->get();
+        'tbl_brand.brand_id')->where('tbl_product.brand_id',$brand_id)->paginate(6);
         $brand_name = DB::table('tbl_brand')->where('tbl_brand.brand_id',$brand_id)->limit(1)->get();
         return view('pages.brand.show_brand')->with('category',$cate_product)->with('brand',$brand_product)
         ->with('brand_by_id',$brand_by_id)->with('brand_name',$brand_name);

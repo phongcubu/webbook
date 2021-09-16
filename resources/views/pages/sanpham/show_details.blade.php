@@ -5,26 +5,9 @@
 						<div class="col-sm-5">
 							<div class="view-product">
 								<img src="{{URL::to('public/uploads/product/'.$value->product_image)}}" alt="" />
-								<h3>ZOOM</h3>
+								
 							</div>
-							<div id="similar-product" class="carousel slide" data-ride="carousel">
-								<!-- Wrapper for slides -->
-								<div class="carousel-inner">
-									<div class="item active">
-										<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-									</div>
-
-								</div>
-								<!-- Controls -->
-								<a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								</a>
-								<a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
+							
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
@@ -60,7 +43,7 @@
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#details" data-toggle="tab">Mô tả sản phẩm</a></li>
 								<li><a href="#companyprofile" data-toggle="tab">Chi tiết sản phẩm</a></li>
-								<li><a href="#reviews" data-toggle="tab">Đánh giá</a></li>
+								{{-- <li><a href="#reviews" data-toggle="tab">Đánh giá</a></li> --}}
 							</ul>
 						</div>
 						<div class="tab-content">
@@ -71,7 +54,7 @@
                                 <p>{!!$value->product_content!!}</p>
                             </div>
 
-							<div class="tab-pane fade" id="reviews" >
+							{{-- <div class="tab-pane fade" id="reviews" >
 								<div class="col-sm-12">
 									<ul>
 										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
@@ -93,7 +76,7 @@
 										</button>
 									</form>
 								</div>
-							</div>
+							</div> --}}
 
 						</div>
 					</div><!--/category-tab-->
@@ -110,8 +93,13 @@
                                             <div class="single-products">
                                                 <div class="productinfo text-center">
                                                     <img src="{{URL::to('public/uploads/product/'.$lienquan->product_image)}}" alt="" />
-                                                    <h2>{{number_format($lienquan->product_price).' '.'VNĐ'}}</h2>
-                                                    <p>{{$lienquan->product_name}}</p>
+                                                    {{-- <h2>{{number_format($lienquan->product_price).' '.'vnđ'}}</h2>
+                                                    <p>{{$lienquan->product_name}}</p> --}}
+													<p class="product-name">{{$lienquan->product_name}}</p>
+													<p style="height: 20px;">
+														<span class="new_price">{{number_format(floatval($lienquan->product_price_sale)).' '.'vnđ'}}</span>
+														<span class="old_price">{{number_format($lienquan->product_price).' '.'vnđ'}}</span>
+													</p>
                                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
                                                 </div>
                                             </div>

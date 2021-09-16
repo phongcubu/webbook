@@ -28,6 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{{asset('public/backend/css/monthly.css')}}">
 <!-- //calendar -->
 <!-- //font-awesome icons -->
+<script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
 <script src="{{asset('public/backend/js/raphael-min.js')}}"></script>
 <script src="{{asset('public/backend/js/morris.js')}}"></script>
@@ -131,6 +132,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <ul class="sub">
 						<li><a href="{{URL::to('add-brand-product')}}">Thêm thương hiệu sản phẩm</a></li>
 						<li><a href="{{URL::to('all-brand-product')}}">Liệt kê thương hiệu sản phẩm</a></li>
+                        
+                    </ul>
+                </li>
+				<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Danh Mục Bài Viết</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('add-category-post')}}">Thêm danh mục bài viết</a></li>
+						<li><a href="{{URL::to('all-category-post')}}">Liệt kê danh mục bài viết</a></li>
                         
                     </ul>
                 </li>

@@ -807,10 +807,159 @@ h2.title {
     position: relative;
 }
 
+.three h2 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5em;
+    padding-bottom: 11px;
+    position: relative;
+    /* margin: 0px 15px; */
+    margin-top: 0;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    color: #fff;
+    background-color: #DCDCDC;
+    border-radius: 4px;
+}
+
+.three h2:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 55px;
+    background-color: #111;
+}
+
+.three h2:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    height: 1px;
+    width: 95%;
+    max-width: 300px;
+    background-color: #333;
+}
+
+
+/*  */
+
+@-webkit-keyframes rise {
+    0% {
+        padding-top: 100%;
+    }
+    60% {
+        padding-top: 7%;
+    }
+    80% {
+        padding-top: 5%;
+        border-bottom: 0px solid #fff;
+        opacity: 0.5;
+        text-shadow: 2px 2px 5px #fff;
+    }
+    100% {
+        padding-top: 0%;
+        border-bottom: 0.35em solid #fff;
+        opacity: 1;
+        text-shadow: 0;
+    }
+}
+
+@keyframes rise {
+    0% {
+        padding-top: 100%;
+    }
+    60% {
+        padding-top: 7%;
+    }
+    80% {
+        padding-top: 5%;
+        border-bottom: 0px solid #fff;
+        opacity: 0.5;
+        text-shadow: 2px 2px 200px rgba(255, 255, 255, 1);
+    }
+    100% {
+        padding-top: 0%;
+        border-bottom: 0.35em solid #fff;
+        opacity: 1;
+        text-shadow: 200px 200px 200px rgba(255, 255, 255, 0);
+    }
+}
+
+.rise-text {
+    position: relative;
+    text-align: center;
+    margin: auto;
+    opacity: 0;
+    padding-top: 100%;
+    color: black;
+    border-bottom: 0;
+    text-shadow: 2px 2px 5px #fff;
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 6em;
+    font-weight: normal;
+    -webkit-animation-name: rise;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: cubic-bezier(0, 0.25, 0.55, 1);
+    -webkit-animaiton-fill-mode: forwards;
+    animation-name: rise;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0, 0.25, 0.55, 1);
+    animation-fill-mode: forwards;
+}
+
+
+/**/
+
+
+/*  giá cữ giá mới*/
+
+.new_price {
+    color: #ee4d2d;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.old_price {
+    color: #787878;
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+
+/* bán chạy sản phẩm  */
+
+
+/*-- scroll --*/
+
+.scroll {
+    position: absolute;
+}
+
+.box-scroll {
+    min-height: 25em;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/*  */
+
 .product-image-wrapper {
     border: 1px solid #F7F7F5;
     overflow: hidden;
     margin-bottom: 30px;
+}
+
+.product-image-wrapper:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }
 
 .single-products {
@@ -820,8 +969,8 @@ h2.title {
 .new,
 .sale {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -1px;
+    right: 15px;
 }
 
 .productinfo h2 {
@@ -839,15 +988,31 @@ h2.title {
     font-weight: 700;
 }
 
+.product-price {
+    color: #e21515;
+}
+
 .productinfo p {
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: 700;
     color: #696763;
-    height: 50px;
+    height: 46px;
     margin: 5px;
     padding: 2px;
     text-align: center;
+}
+
+.product-name {
+    width: 98%;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    font-weight: 300;
+    text-align: left;
 }
 
 .productinfo img {

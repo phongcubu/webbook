@@ -24,8 +24,13 @@
                             placeholder="Tên sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Giá sản phẩm</label>
+                            <label for="exampleInputEmail1">Giá sản phẩm gốc</label>
                             <input type="text" class="form-control" name="product_price" id="exampleInputEmail1" 
+                            placeholder="Giá sản phẩm">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Giá sản phẩm sale</label>
+                            <input type="text" class="form-control" name="product_price_sale" id="exampleInputEmail1" 
                             placeholder="Giá sản phẩm">
                         </div>
                         <div class="form-group">
@@ -36,11 +41,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô Tả sản phẩm</label>
-                            <textarea  style="resize: none" rows="8" name="product_desc" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
+                            <textarea  style="resize: none" rows="8" name="product_desc" class="form-control ckeditor" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                            <textarea  style="resize: none" rows="8" name="product_content" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
+                            <textarea  style="resize: none" rows="8" name="product_content" class="form-control ckeditor" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Danh muc sản phẩm</label>

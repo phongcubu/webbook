@@ -27,9 +27,14 @@
                                     value="{{$pro->product_name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Giá sản phẩm</label>
+                                    <label for="exampleInputEmail1">Giá sản phẩm gốc</label>
                                     <input type="text" class="form-control" value="{{$pro->product_price}}" name="product_price" 
                                     id="exampleInputEmail1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Giá sản phẩm sale</label>
+                                    <input type="text" class="form-control" name="product_price_sale" id="exampleInputEmail1" 
+                                    placeholder="Giá sản phẩm" value="{{$pro->product_price_sale}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
@@ -38,12 +43,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô Tả sản phẩm</label>
-                                    <textarea name="id2" style="resize: none" rows="8" name="product_desc" class="form-control" id="exampleInputPassword1" 
+                                    <textarea style="resize: none" rows="8" name="product_desc" class="form-control ckeditor" id="exampleInputPassword1" 
                                     >{{$pro->product_desc}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                                    <textarea name="id1" style="resize: none" rows="8" name="product_content" class="form-control" id="exampleInputPassword1" 
+                                    <textarea  style="resize: none" rows="8" name="product_content" class="form-control ckeditor" id="exampleInputPassword1" 
                                     >{{$pro->product_content}}</textarea>
                                 </div>
                                 <div class="form-group">

@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeControllers;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,11 @@ use App\Http\Controllers\CheckoutController;
 //Fronend
 Route::get('/', [HomeControllers ::class, 'home']);
 Route::get('trang-chu/', [HomeControllers ::class, 'home'])->name('trang-chu');
+Route::get('contact/', [HomeControllers ::class, 'contact'])->name('contact');
 Route::post('search/', [HomeControllers ::class, 'search'])->name('search');
 
 //Danh muc san pham
+Route::get('danh-muc-bai-viet/{category_post_id}', [PostController::class, 'danh_muc_bai_viet'])->name('danh-muc-bai-viet');
 Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
 Route::get('thuong-hieu-san-pham/{brand_id}', [BrandProduct ::class, 'show_brand_home']);
 Route::get('chi-tiet-san-pham/{product_id}', [ProductController ::class, 'details_product']);
@@ -61,6 +64,23 @@ Route::post('update-category-product/{category_product_id}',[CategoryProduct::cl
 Route::get('edit-category-product/{category_product_id}',[CategoryProduct::class, 'edit_category_product'])->name('edit-category-product');
 // xóa danh mục sản phẩm trong liệt kê danh mục
 Route::get('delete-category-product/{category_product_id}',[CategoryProduct::class, 'deletee_category_product'])->name('delete-category-product');
+
+
+
+// ----------- CATEGORY POST ---------
+Route::get('add-category-post/', [PostController::class, 'add_category_post'])->name('add-category-post');
+Route::get('all-category-post/', [PostController::class, 'all_category_post'])->name('all-category-post');
+// sửa danh mục sản phẩm trong liệt kê danh mục
+Route::get('edit-category-post/{category_post_id}',[PostController::class, 'edit_category_post'])->name('edit-category-post');
+// xóa danh mục sản phẩm trong liệt kê danh mục
+Route::get('delete-category-post/{category_post_id}',[PostController::class, 'deletee_category_post'])->name('delete-category-post');
+
+
+Route::post('save-category-post/',[PostController::class, 'save_category_post'])->name('save-category-post');
+Route::post('update-category-post/{category_post_id}',[PostController::class, 'update_category_post'])->name('update-category-post');
+
+
+
 
 
 // ----------- Brand Product Dashboard---------

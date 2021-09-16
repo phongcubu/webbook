@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>PSP-BOOK</title>
+    <title>Liên Hệ | PSP-BOOK</title>
+   
     <link href="{{asset('public/frontend/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('public/frontend/css/font-awesome.min.css')}}" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <link href="{{asset('public/frontend/css/prettyPhoto.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/price-range.css')}}" rel="stylesheet">
     <link href="{{asset('public/frontend/css/animate.css')}}" rel="stylesheet">
@@ -22,13 +26,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-   
-
-
-</head><!--/head-->
+</head>
+<!--/head-->
 
 <body>
- 
+
     <header id="header"><!--header-->
         <div class="header_top"><!--header_top-->
             <div class="container">
@@ -138,15 +140,7 @@
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="{{URL::to('trang-chu')}}" class="active">Trang Chủ</a></li>
                               
-                                <li class="dropdown"><a href="#">Tin Tức<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        {{-- @foreach($cate_post as $key => $post)
-   
-                                        <li><a href="{{URL::to('danh-muc-bai-viet/'.$post->category_post_id)}}">{{$post->category_post_name}}</a></li>
-                                     @endforeach  --}}
-                                      
-                                    </ul>
-                                </li> 
+                                <li ><a href="#">Tin Tức</a></li> 
                                 
                                 <li><a href="{{URL::to('contact')}}">Liên Hệ</a></li>
                             </ul>
@@ -165,113 +159,63 @@
             </div>
         </div><!--/header-bottom-->
     </header><!--/header-->
-    
-    <section id="slider"><!--slider-->
-        <div class="container">
+
+    <div id="contact-page" class="container">
+        <div class="bg">
             <div class="row">
                 <div class="col-sm-12">
-                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#slider-carousel" data-slide-to="1"></li>
-                            <li data-target="#slider-carousel" data-slide-to="2"></li>
-                        </ol>
-                        
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="col-sm-4">
-                                    <h1><span>PSP</span>-BOOK</h1>
-                                    <h2>Free E-Commerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Bắt đầu mua</button>
-                                </div>
-                                <div class="col-sm-8">
-                                    <img src="{{asset('public/frontend/images/shop/baner/banner2.jpg')}}" class="girl img-responsive" alt="" />
-                                   
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-sm-4">
-                                    <h1><span>PSP</span>-BOOK</h1>
-                                    <h2>100% MẪU SÁCH ĐƯỢC CHỌN LỰA TỐT NHẤT</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Bắt đầu mua</button>
-                                </div>
-                                <div class="col-sm-8">
-                                    <img src="{{asset('public/frontend/images/shop/baner/banner1.jpg')}}" class="girl img-responsive" alt="" />
-                                    <img src="{{asset('public/frontend/images/shop/pricing.png')}}"  class="pricing" alt="" />
-                                </div>
-                            </div>
-                            
-                            <div class="item">
-                                <div class="col-sm-4">
-                                    <h1><span>PSP</span>-BOOK</h1>
-                                    <h2>Thư Viện ĐỌ</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Bắt đầu mua</button>
-                                </div>
-                                <div class="col-sm-8">
-                                    <img src="{{asset('public/frontend/images/shop/baner/banner3.jpg')}}" class="girl img-responsive" alt="" />
-                                    <img src="{{asset('public/frontend/images/home/pricing.png')}}" class="pricing" alt="" />
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
+                    <h2 class="title text-center">Liên Hệ Với Chúng Tôi</h2>
+                    <div id="gmap" class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.518703923747!2d105.81917361476303!3d21.01192158600752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab7dbe998e37%3A0x11cbb19d65fb8af6!2zMTIyIFRow6FpIEjDoCwgVHJ1bmcgTGnhu4d0LCDEkOG7kW5nIMSQYSwgSMOgIE7hu5lpIDEwMDAwMCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1630201219859!5m2!1svi!2s"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    
                 </div>
             </div>
-        </div>
-    </section><!--/slider-->
-    
-    <section>
-        <div class="container">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="left-sidebar">
-                        <h2>Danh mục sản phẩm</h2>
-                        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                            @foreach($category as $key => $cate)
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="{{URL::to('danh-muc-san-pham/'.$cate->category_id)}}">{{$cate->category_name}}</a></h4>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div><!--/category-products-->
-                    
-                        <div class="brands_products"><!--brands_products-->
-                            <h2>Thương hiệu sản phẩm</h2>
-                            <div class="brands-name">
-                            @foreach($brand as $key => $brand)
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="{{URL::to('thuong-hieu-san-pham/'.$brand->brand_id)}}"> {{$brand->brand_name}}</a></li>
-                                    
-                                </ul>
-                                @endforeach
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">Gửi Phản Hồi</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                            <div class="form-group col-md-6">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Họ và Tên">
                             </div>
-                        </div><!--/brands_products-->
-                        <div ><!--shipping-->
-							<img style="margin: 10px auto;" src="{{asset('public/frontend/images/shop/nha-sach-tiki.jpg')}}" alt="" />
-						</div><!--/shipping-->
+                            <div class="form-group col-md-6">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="text" name="subject" class="form-control" required="required" placeholder="Số điện thoại">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Nội dung"></textarea>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="submit" name="submit" class="btn btn-primary pull-right" value="Gửi đi">
+                            </div>
+                        </form>
                     </div>
                 </div>
-                
-                <div class="col-sm-9 padding-right">
-                    @yield('content')
-                    
+                <div class="col-sm-4">
+                    <div class="contact-info">
+                        <h2 class="title text-center">Thông Tin liên lạc </h2>
+                        <address>
+	    					<p><i class="fa fa-institution fa-2x" style="color: aquamarine;"> </i><span style="font-weight:900;font-size: 30px;"> PSP-BOOK</span></p>
+							<p><i class="fa fa-map-marker fa-1x" > </i> : 122 Thái Hà, Trung Liệt, Đống Đa, Hà Nội </p>
+							
+							<p><i class="fa fa-phone" ></i> : 0814.515.062</p>
+							<p><i class="fa fa-envelope-open" ></i > : pspbook@gmail.com</p>
+	    				</address>
+                        <div class="social-networks">
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FNh%25C3%25A0-s%25C3%25A1ch-Ph%25C6%25B0%25C6%25A1ng-Mai-100276445110239&tabs=timeline&width=300&height=300&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                                width="300" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    
+    </div>
+    <!--/#contact-page-->
+
     <footer id="footer"><!--Footer-->
         <div class="footer-top">
             <div class="container">
@@ -325,7 +269,7 @@
                                 </a>
                                 <p>
                                     Thủ tục đổi trả</p>
-                                <h2 style="font-weight: 500; font-size: 16px;">TRONG VÒNG 7 NGÀY</h2>
+                                <h2 style="font-weight: 500; font-size: 16px;">DỄ DÀNG</h2>
                             </div>
                         </div>
                     </div>
@@ -419,5 +363,7 @@
     <script src="{{asset('public/frontend/js/price-range.js')}} "></script>
     <script src="{{asset('public/frontend/js/jquery.prettyPhoto.js')}} "></script>
     <script src="{{asset('public/frontend/js/main.js')}} "></script>
+    
 </body>
+
 </html>

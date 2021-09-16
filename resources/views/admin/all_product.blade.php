@@ -44,7 +44,8 @@
                             </label>
                         </th>
                         <th>Tên Sản Phẩm </th>
-                        <th>Giá Sản Phẩm </th>
+                        <th>Giá Gốc Sản Phẩm </th>
+                        <th>Giá Sale Sản Phẩm </th>
                         <th>Hình Sản Phẩm </th>
                         <th>Danh Mục Sản Phẩm </th>
                         <th>Thương Hiệu Sản Phẩm </th>
@@ -58,6 +59,7 @@
                     <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                     <td>{{$pro->product_name}}</td>
                     <td>{{$pro->product_price}}</td>
+                    <td>{{$pro->product_price_sale}}</td>
                     <td><img src="public/uploads/product/{{$pro->product_image}}" height="100" width="100"></td>
                     <td>{{$pro->category_name}}</td>
                     <td>{{$pro->brand_name}}</td>
@@ -93,17 +95,10 @@
         </div>
         <footer class="panel-footer">
             <div class="row">
-                <div class="col-sm-5 text-center">
-                    <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
-                </div>
-                <div class="col-sm-7 text-right text-center-xs">                
+              
+                <div class="col-sm-7 text-right text-center-xs " style="float: right">              
                     <ul class="pagination pagination-sm m-t-none m-b-none">
-                        <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
-                        <li><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
+                        {!!$all_product->links()!!}
                     </ul>
                 </div>
             </div>
