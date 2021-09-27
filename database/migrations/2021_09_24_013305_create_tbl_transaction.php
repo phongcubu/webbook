@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblPayment extends Migration
+class CreateTblTransaction extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class TblPayment extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_payment', function (Blueprint $table) {
-            $table->increments('payment_id');
-            $table->string('payment_method'); // hình thức thanh toán
-            $table->integer('payment_status');
+        Schema::create('tbl_transaction', function (Blueprint $table) {
+            $table->increments('transaction_id');
+            $table->string('transaction_status'); // hình thức thanh toán
+            $table->integer('transaction_method');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class TblPayment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_payment');
+        Schema::dropIfExists('tbl_transaction');
     }
 }

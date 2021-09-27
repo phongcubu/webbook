@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
+use App\Models\CatePost;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -109,11 +110,14 @@ class CategoryProduct extends Controller
     public function show_category_home($category_id){
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
+        $category_post = CatePost::orderBy('category_post_id','DESC')->get();
+
         $category_by_id = DB::table('tbl_product')->join('tbl_category_product','tbl_product.category_id','=',
         'tbl_category_product.category_id')->where('tbl_product.category_id',$category_id)->paginate(3);
         $category_name = DB::table('tbl_category_product')->where('tbl_category_product.category_id',$category_id)->limit(1)->get();
+        
         return view('pages.category.show_category')->with('category',$cate_product)->with('brand',$brand_product)
-        ->with('category_by_id',$category_by_id)->with('category_name',$category_name);
+        ->with('category_by_id',$category_by_id)->with('category_name',$category_name)->with('cate_post',$category_post);
     }
     
 }

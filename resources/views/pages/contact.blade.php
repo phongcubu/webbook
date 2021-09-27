@@ -217,64 +217,8 @@
     <!--/#contact-page-->
 
     <footer id="footer"><!--Footer-->
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="col-sm-3  ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/chinhhang.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-                                    <p>sản phẩm</p>
-                                    <h2 style="font-weight: 500; font-size: 16px;"> Chính Hãng</h2>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/freeship.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-'
-                                </a>
-                                <p>miễn phí</p>
-                                <h2 style="font-weight: 500; font-size: 16px;">Toàn Quốc</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/hotline.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-
-                                </a>
-                                <p>
-                                    Hotline hỗ trợ</p>
-                                <h2 style="font-weight: 500; font-size: 16px;">1900.2091</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/doitra.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-                                </a>
-                                <p>
-                                    Thủ tục đổi trả</p>
-                                <h2 style="font-weight: 500; font-size: 16px;">DỄ DÀNG</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <hr><div class="footer-top">
+      
         </div>
         
         <div class="footer-widget">

@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeControllers;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\Posts;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +25,13 @@ use App\Http\Controllers\PostController;
 
 //Fronend
 Route::get('/', [HomeControllers ::class, 'home']);
+
 Route::get('trang-chu/', [HomeControllers ::class, 'home'])->name('trang-chu');
 Route::get('contact/', [HomeControllers ::class, 'contact'])->name('contact');
 Route::post('search/', [HomeControllers ::class, 'search'])->name('search');
 
 //Danh muc san pham
-Route::get('danh-muc-bai-viet/{category_post_id}', [PostController::class, 'danh_muc_bai_viet'])->name('danh-muc-bai-viet');
+
 Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
 Route::get('thuong-hieu-san-pham/{brand_id}', [BrandProduct ::class, 'show_brand_home']);
 Route::get('chi-tiet-san-pham/{product_id}', [ProductController ::class, 'details_product']);
@@ -41,7 +44,7 @@ Route::get('dashboard/',[AdminController::class, 'show_dashboard']);
 // logout
 Route::get('logout/', [AdminController::class, 'logout'])->name('logout');
 // vào trang chủ bảng điều khiển khi login
-Route::post('admin-dashbord/',[AdminController::class, 'dashboard']);
+Route::post('admin-dashbord/',[AdminController::class, 'dashboard'])->name('admin-dashbord');
 
 
 // ----------- Category Product Dashboard---------
@@ -74,7 +77,6 @@ Route::get('all-category-post/', [PostController::class, 'all_category_post'])->
 Route::get('edit-category-post/{category_post_id}',[PostController::class, 'edit_category_post'])->name('edit-category-post');
 // xóa danh mục sản phẩm trong liệt kê danh mục
 Route::get('delete-category-post/{category_post_id}',[PostController::class, 'deletee_category_post'])->name('delete-category-post');
-
 
 Route::post('save-category-post/',[PostController::class, 'save_category_post'])->name('save-category-post');
 Route::post('update-category-post/{category_post_id}',[PostController::class, 'update_category_post'])->name('update-category-post');
@@ -118,23 +120,37 @@ Route::post('update-product/{product_id}',[ProductController::class, 'update_pro
 Route::get('edit-product/{product_id}',[ProductController::class, 'edit_product'])->name('edit-product');
 Route::get('delete-product/{product_id}',[ProductController::class, 'deletee_product'])->name('delete-product');
 
-// -----Cart
+//  -------------------Post -----------
+Route::get('add-post/', [Posts::class, 'add_post'])->name('add-post');
+Route::post('save-post/',[Posts::class, 'save_post'])->name('save-post');
+Route::get('all-post/',[Posts::class, 'all_post'])->name('all-post');
+Route::get('delete-post/{post_id}',[Posts::class, 'delete_post'])->name('delete-post');
+Route::get('edit-post/{post_id}',[Posts::class, 'edit_post'])->name('edit_post');
+Route::post('update-post/{post_id}',[Posts::class, 'update_post'])->name('update_post');
+Route::get('danh-muc-bai-viet/{category_post_slug}', [Posts::class, 'danh_muc_bai_viet'])->name('danh-muc-bai-viet');
+Route::get('bai-viet/{post_slug}', [Posts::class, 'bai_viet'])->name('bai-viet');
+
+// -----Cart----------
 Route::post('save-cart/',[CartController::class, 'save_cart'])->name('save-cart');
 Route::post('update-cart-quantity/',[CartController::class, 'update_cart_quantity'])->name('update-cart-quantity');
 
 Route::get('show-cart/',[CartController::class, 'show_cart'])->name('show-cart');
 Route::get('delete-to-cart/{rowId}',[CartController::class, 'delete_to_cart'])->name('delete-to-cart');
 
-// ---checkout
+// ---Checkout----
 Route::get('login-checkout/',[CheckoutController::class, 'login_checkout'])->name('login-checkout');
 Route::get('logout-checkout/',[CheckoutController::class, 'logout_checkout'])->name('logout-checkout');
 Route::get('checkout/',[CheckoutController::class, 'checkout'])->name('checkout');
-Route::get('payment/',[CheckoutController::class, 'payment'])->name('payment');
+Route::get('transaction/',[CheckoutController::class, 'transaction'])->name('transaction');
+//payment
+Route::post('create/payment',[CheckoutController::class, 'createPayment'])->name('create.payment');
+Route::get('vnpay/return',[CheckoutController::class, 'vnpayReturn'])->name('vnpay.return');
+
 //  lưu dữ liệu form
 Route::post('login-customer/',[CheckoutController::class, 'login_customer'])->name('login-customer'); // đăng nhập người dùng
 Route::post('add-customer',[CheckoutController::class, 'add_customer'])->name('add-customer'); // đăng kí người dùng
 Route::post('save-checkout-customer',[CheckoutController::class, 'save_checkout_customer'])->name('save-checkout-customer');
-Route::post('order-payment-place',[CheckoutController::class, 'order_payment_place'])->name('order-payment-place');
+Route::post('order-transaction-place',[CheckoutController::class, 'order_transaction_place'])->name('order-transaction-place');
 //Order
 Route::get('manage-order/',[CheckoutController::class, 'manage_order'])->name('manage-order');
 Route::get('view-order/{orderId}',[CheckoutController::class, 'view_order'])->name('view-order');

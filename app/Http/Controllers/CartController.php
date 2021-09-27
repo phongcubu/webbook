@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Cart;
+use App\Models\CatePost;
 session_start();
 
 class CartController extends Controller
@@ -40,7 +41,8 @@ class CartController extends Controller
 
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
-        return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product);
+        $category_post = CatePost::orderBy('category_post_id','DESC')->get();
+        return view('pages.cart.show_cart')->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$category_post);
     }
     public function delete_to_cart($rowId)
     {

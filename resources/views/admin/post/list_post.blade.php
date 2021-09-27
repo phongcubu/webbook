@@ -3,9 +3,9 @@
     <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Liệt kê danh mục bài viết
+      Liệt kê bài viết
     </div>
-    {{-- <div class="row w3-res-tb">
+  {{--   <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
         <select class="input-sm form-control w-sm inline v-middle">
           <option value="0">Bulk action</option>
@@ -34,7 +34,7 @@
                                 Session::put('message',null);
                             }
                             ?>
-      <table class="table table-striped b-t b-light">
+      <table class="table table-striped b-t b-light" id="myTable">
         <thead>
           <tr>
             <th style="width:20px;">
@@ -42,31 +42,41 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Tên danh mục bài viết</th>
-            <th>Mô tả danh mục</th>
+            <th>Tên bài viết</th>
+            <th>Hình ảnh</th>
+          
+            <th>Mô tả bài viết</th>
+            <th>Danh mục bài viết</th>
             <th>Hiển thị</th>
+           <th>
+               Quản lý 
+           </th>
             
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-          @foreach($all_category_post as $key => $cate_post)
+          @foreach($all_post as $key => $post)
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{ $cate_post->category_post_name }}</td>
-            <td>{{ $cate_post->category_post_desc }}</td>
-       
+            <td>{{ $post->post_title }}</td>
+            <td><img src="{{asset('public/uploads/post/'.$post->post_image)}}" height="100" width="100"></td>
+    
+            <td>{!! $post->post_desc !!}</td>
+          
+            <td>{{ $post->category_post->category_post_name }}</td>
             <td>
-              @if($cate_post->category_post_status==1)
+              @if($post->post_status==1)
                 Hiển thị
               @else 
                 Ẩn
               @endif
-            </td>           
+            </td>
+
             <td>
-              <a href="{{URL::to('edit-category-post/'.$cate_post->category_post_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a href="{{URL::to('edit-post/'.$post->post_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-pencil-square-o text-success text-active"></i></a>
-              <a onclick="return confirm('Bạn có chắc là muốn xóa bài viết này ko?')" href="{{URL::to('delete-category-post/'.$cate_post->category_post_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc là muốn xóa bài viết này ko?')" href="{{URL::to('delete-post/'.$post->post_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
@@ -75,16 +85,19 @@
         </tbody>
       </table>
     </div>
-    <footer class="panel-footer">
+ <footer class="panel-footer">
       <div class="row">
-
-        <div class="col-sm-7 text-right text-center-xs " style="float: right">                
+        
+        <div class="col-sm-5 text-center">
+          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+        </div>
+        <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-             {!!$all_category_post->links()!!}
+            {!!$all_post->links()!!}
           </ul>
         </div>
       </div>
-    </footer>
+    </footer> 
   </div>
 </div>
 @endsection
