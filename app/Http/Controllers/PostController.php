@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Models\CatePost;
+use App\Models\Post;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -39,6 +40,7 @@ class PostController extends Controller
         $data = $request->all();
     	$category_post = new CatePost();
     	$category_post->category_post_name = $data['category_post_name'];
+    	$category_post->category_post_slug = $data['category_post_slug'];
     	$category_post->category_post_desc = $data['category_post_desc'];
     	$category_post->category_post_status = $data['category_post_status'];
     	$category_post->save();
@@ -59,6 +61,7 @@ class PostController extends Controller
         $data = $request->all();
     	$category_post = CatePost::find($category_post_id);
     	$category_post->category_post_name = $data['category_post_name'];
+    	$category_post->category_post_slug = $data['category_post_slug'];
     
     	$category_post->category_post_desc = $data['category_post_desc'];
     	$category_post->category_post_status = $data['category_post_status'];
@@ -84,12 +87,6 @@ class PostController extends Controller
     	return view('admin.catepost.list_post')->with(compact('all_category_post'));
     }
     
-    public function danh_muc_bai_viet($category_post_id){
-        // $this->AuthLogin();
-        // // lấy data từ bảng 
-        // $all_category_post = DB::table('tbl_category_post')->paginate(3);
-        // // đưa ra hiển thị  với dữ liệu lấy được
-        // $manager_category_post = view('admin.post.list_post')->with('all_category_post',$all_category_post);
-        // return view('admin_layout')->with('admin.all_category_post',$manager_category_post);
-    }
+  
+
 }

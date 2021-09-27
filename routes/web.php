@@ -31,7 +31,7 @@ Route::get('contact/', [HomeControllers ::class, 'contact'])->name('contact');
 Route::post('search/', [HomeControllers ::class, 'search'])->name('search');
 
 //Danh muc san pham
-Route::get('danh-muc-bai-viet/{category_post_id}', [PostController::class, 'danh_muc_bai_viet'])->name('danh-muc-bai-viet');
+
 Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
 Route::get('thuong-hieu-san-pham/{brand_id}', [BrandProduct ::class, 'show_brand_home']);
 Route::get('chi-tiet-san-pham/{product_id}', [ProductController ::class, 'details_product']);
@@ -123,7 +123,12 @@ Route::get('delete-product/{product_id}',[ProductController::class, 'deletee_pro
 //  -------------------Post -----------
 Route::get('add-post/', [Posts::class, 'add_post'])->name('add-post');
 Route::post('save-post/',[Posts::class, 'save_post'])->name('save-post');
-
+Route::get('all-post/',[Posts::class, 'all_post'])->name('all-post');
+Route::get('delete-post/{post_id}',[Posts::class, 'delete_post'])->name('delete-post');
+Route::get('edit-post/{post_id}',[Posts::class, 'edit_post'])->name('edit_post');
+Route::post('update-post/{post_id}',[Posts::class, 'update_post'])->name('update_post');
+Route::get('danh-muc-bai-viet/{category_post_slug}', [Posts::class, 'danh_muc_bai_viet'])->name('danh-muc-bai-viet');
+Route::get('bai-viet/{post_slug}', [Posts::class, 'bai_viet'])->name('bai-viet');
 
 // -----Cart----------
 Route::post('save-cart/',[CartController::class, 'save_cart'])->name('save-cart');

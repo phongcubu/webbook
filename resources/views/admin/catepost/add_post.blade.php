@@ -19,10 +19,13 @@
                                 <form role="form" action="{{URL::to('/save-category-post')}}" method="post">
                                     {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên danh mục bài viết </label>
-                                    <input type="text" name="category_post_name" class="form-control"  placeholder="Tên danh mục">
+                                    <label for="exampleInputEmail1">Tên danh mục</label>
+                                    <input type="text" name="category_post_name" class="form-control" onkeyup="ChangeToSlug();" id="slug" placeholder="Tên danh mục">
                                 </div>
-                                
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Slug</label>
+                                    <input type="text" name="category_post_slug" class="form-control" id="convert_slug" placeholder="Slug">
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô tả danh mục bài viết</label>
                                     <textarea style="resize: none" rows="8" class="form-control" name="category_post_desc" id="exampleInputPassword1" placeholder="Mô tả danh mục"></textarea>
@@ -31,7 +34,7 @@
                                     <label for="exampleInputPassword1">Hiển thị</label>
                                       <select name="category_post_status" class="form-control input-sm m-bot15">
                                           <option value="1">hiện</option>
-                                        <option value="0">ẩn </option>
+                                         <option value="0">ẩn </option>
                                             
                                     </select>
                                 </div>

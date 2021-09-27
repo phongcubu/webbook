@@ -43,8 +43,10 @@
               </label>
             </th>
             <th>Tên danh mục bài viết</th>
+            <th>Slug</th>
             <th>Mô tả danh mục</th>
             <th>Hiển thị</th>
+            <th>Quản lý</th>
             
             <th style="width:30px;"></th>
           </tr>
@@ -54,6 +56,7 @@
           <tr>
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{ $cate_post->category_post_name }}</td>
+            <td>{{ $cate_post->category_post_slug }}</td>
             <td>{{ $cate_post->category_post_desc }}</td>
        
             <td>

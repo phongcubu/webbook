@@ -18,9 +18,14 @@
                             <div class="position-center">
                                 <form role="form" action="{{URL::to('update-category-post/'.$edit_category_post->category_post_id)}}" method="post">
                                     {{ csrf_field() }}
+                              
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên danh mục</label>
-                                    <input type="text" name="category_post_name" value="{{$edit_category_post->category_post_name}}" class="form-control"  placeholder="Tên danh mục">
+                                    <input type="text" name="category_post_name" value="{{$edit_category_post->category_post_name}}" class="form-control" onkeyup="ChangeToSlug();" id="slug" placeholder="Tên danh mục">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Slug</label>
+                                    <input type="text" name="category_post_slug" value="{{$edit_category_post->category_post_slug}}" class="form-control" id="convert_slug" placeholder="Slug">
                                 </div>
                             
                                 <div class="form-group">
@@ -31,11 +36,11 @@
                                     <label for="exampleInputPassword1">Hiển thị</label>
                                       <select name="category_post_status" class="form-control input-sm m-bot15">
                                         @if($edit_category_post->category_post_status==1)
-                                            <option selected value="0">Hiển thị</option>
-                                            <option value="1">Ẩn</option>
+                                            <option selected value="1">Hiển thị</option>
+                                            <option value="0">Ẩn</option>
                                         @else
-                                             <option value="0">Hiển thị</option>
-                                            <option selected value="1">Ẩn</option>
+                                             <option value="1">Hiển thị</option>
+                                            <option selected value="0">Ẩn</option>
                                         @endif
 
                                             

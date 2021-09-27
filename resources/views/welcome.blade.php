@@ -144,7 +144,7 @@
                                     <ul role="menu" class="sub-menu">
                                          @foreach($cate_post as $key => $post)
    
-                                        <li><a href="{{URL::to('danh-muc-bai-viet/'.$post->category_post_id)}}">{{$post->category_post_name}}</a></li>
+                                        <li><a href="{{URL::to('danh-muc-bai-viet/'.$post->category_post_slug)}}">{{$post->category_post_name}}</a></li>
                                      @endforeach  
                                       
                                     </ul>
