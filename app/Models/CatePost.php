@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CategoryPost extends Model
+class CatePost extends Model
 {
     use HasFactory;
     public $timestamps = false; //set time to false
@@ -14,8 +14,4 @@ class CategoryPost extends Model
     ];
     protected $primaryKey = 'category_post_id';
  	protected $table = 'tbl_category_post';
-
- 	// public function post(){
- 	// 	$this->hasMany('App\Post');
- 	// }
 }

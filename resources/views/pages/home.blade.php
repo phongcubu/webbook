@@ -19,7 +19,7 @@
                                 <span class="old_price">{{number_format($product->product_price).' '.'vnđ'}}</span>
                             </p>
                         </div>
-                        <a href="#" class="btn btn-default add-to-cart" style="margin: 10px 0px"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                        <a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}" class="btn btn-default add-to-cart" style="margin: 10px 0px">Chi tiết sản phẩm</a>
                     </div>
                 </div>
                 

@@ -2,15 +2,17 @@
 @section('content')
                     @foreach($product_details as $key => $value)
                     <div class="product-details"><!--product-details-->
+                    	<div class="three" >
+							<h2 style="background-color: #fff; color:aqua">Chi Tiết Sản Phẩm</h2>
+					</div>
 						<div class="col-sm-5">
-							<div class="view-product">
-								<img src="{{URL::to('public/uploads/product/'.$value->product_image)}}" alt="" />
-								
+							<div class="view-product zoom">
+								<img  src="{{URL::to('public/uploads/product/'.$value->product_image)}}" alt="" />
 							</div>
 							
 						</div>
 						<div class="col-sm-7">
-							<div class="product-information"><!--/product-information-->
+							<div class="product-information "><!--/product-information-->
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>{{$value->product_name}}</h2>
 								<p>Mã ID: {{$value->product_id}}</p>
@@ -18,13 +20,13 @@
 								<form action="{{URL::to('save-cart')}}" method="POST">
 									{{ csrf_field() }}
 									<span>
-										<span>{{number_format($value->product_price).'VNĐ'}}</span>
+										<span style="color: rgb(223, 18, 18)">{{number_format($value->product_price).' '.'đ'}}</span>
 										<label>Số lượng:</label>
 										<input type="number" name="qty" min="1" value="1" /> <br>
 										<input type="hidden" name="productid_hidden" min="1" value="{{$value->product_id}}" /> <br>
 										<button type="submit" class="btn btn-fefault cart">
 											<i class="fa fa-shopping-cart"></i>
-											Thêm vào giỏ hàng
+											 Mua hàng
 										</button>
 									</span>
 								</form>
@@ -33,8 +35,37 @@
 								<p><b>Điều kiện:</b> Mới 100%</p>
 								<p><b>Thương hiệu:</b> {{$value->brand_name}}</p>
                                 <p><b>Danh mục:</b> {{$value->category_name}}</p>
-								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+								<a href=""><img src="{{asset('public/frontend/images/product-details/share.png')}}" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
+							   <hr>
+                         <div class="row">
+                            <div class="col-sm-4" >
+                            <table>
+                                <tr>
+                                    <td><img src="{{asset('public/frontend/images/shop/doitra.png')}}" style=" width: 43px;height: 36px; " alt=""></td>
+                                    <td style="font-size:12px">7 ngày miễn phí trả hàng</td>
+                                </tr>
+                            </table>
+                            </div>
+                            <div class="col-sm-4" >
+                            <table>
+                                <tr>
+                                    <td><img  src="{{asset('public/frontend/images/shop/chinhhang.png')}}" style=" width: 43px;height: 36px; " alt=""></td>
+                                    <td style="font-size:12px">Hàng chính hãng 100%</td>
+                                </tr>
+                            </table>
+                            </div>
+                            <div class="col-sm-4">
+                               
+                                <table>
+                                <tr>
+                                    <td><img  src="{{asset('public/frontend/images/shop/ship.png')}}" style=" width: 43px;height: 36px; " alt=""></td>
+                                    <td style="font-size:12px">Miễn phí vận chuyển </td>
+                                </tr>
+                            </table>
+                            </div>
+                           
+                            </div>
 						</div>
 					</div><!--/product-details-->
                     
@@ -100,7 +131,7 @@
 														<span class="new_price">{{number_format(floatval($lienquan->product_price_sale)).' '.'vnđ'}}</span>
 														<span class="old_price">{{number_format($lienquan->product_price).' '.'vnđ'}}</span>
 													</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                                                    <a href="{{URL::to('chi-tiet-san-pham/'.$lienquan->product_id)}}" class="btn btn-default add-to-cart" style="margin: 10px 0px">Chi tiết sản phẩm</a>
                                                 </div>
                                             </div>
 										</div>

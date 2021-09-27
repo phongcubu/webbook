@@ -78,7 +78,7 @@
                             <ul class="nav navbar-nav">
                                 
                                 <li><a href="{{URL::to('admin-login')}}"><i class="fa fa-user"></i>Trang Admin</a></li>
-                                <li><a href="#"><i class="fa fa-star"></i> Yêu Thích</a></li>
+                               
                                 <?php 
                                 $customer_id = Session::get('customer_id');
                                 $shipping_id=Session::get('shipping_id');
@@ -89,7 +89,7 @@
                                  
                                 <?php
                                 }elseif($customer_id != NULL && $shipping_id!=NULL){
-                                    ?>
+                                ?>
                                 <li><a href="{{URL::to('payment')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
                                 <?php
                                 }else{
@@ -103,9 +103,11 @@
                                 {{-- <li><a href="cart.html"><i class="fa fa-bell"></i> Lịch sử đơn hàng</a></li> --}}
                                 <?php 
                                 $customer_id = Session::get('customer_id');
+                                $customer_name = Session::get('customer_name');
                                 if ($customer_id != NULL) {
-                                    # code...
+                                   
                                     ?>
+                                    <li><a href=""><i class="fa fa-user"></i><?php  echo $customer_name ?></a></li>
                                     <li><a href="{{URL::to('logout-checkout')}}"><i class="fa fa-sign-out"></i>Đăng Xuất</a></li>
                                 <?php
                                 }else{
@@ -140,10 +142,10 @@
                               
                                 <li class="dropdown"><a href="#">Tin Tức<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        {{-- @foreach($cate_post as $key => $post)
+                                         @foreach($cate_post as $key => $post)
    
                                         <li><a href="{{URL::to('danh-muc-bai-viet/'.$post->category_post_id)}}">{{$post->category_post_name}}</a></li>
-                                     @endforeach  --}}
+                                     @endforeach  
                                       
                                     </ul>
                                 </li> 
@@ -274,63 +276,7 @@
     
     <footer id="footer"><!--Footer-->
         <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 ">
-                        <div class="col-sm-3  ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/chinhhang.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-                                    <p>sản phẩm</p>
-                                    <h2 style="font-weight: 500; font-size: 16px;"> Chính Hãng</h2>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/freeship.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-'
-                                </a>
-                                <p>miễn phí</p>
-                                <h2 style="font-weight: 500; font-size: 16px;">Toàn Quốc</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/hotline.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-
-                                </a>
-                                <p>
-                                    Hotline hỗ trợ</p>
-                                <h2 style="font-weight: 500; font-size: 16px;">1900.2091</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3 ">
-                            <div class="video-gallery text-center ">
-                                <a href="# ">
-
-                                    <img src="{{asset('public/frontend/images/shop/thutuczip/doitra.png')}}" style=" width: 100px; height: 100px; border-radius: 50%;" alt=" " />
-
-                                </a>
-                                <p>
-                                    Thủ tục đổi trả</p>
-                                <h2 style="font-weight: 500; font-size: 16px;">TRONG VÒNG 7 NGÀY</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+       
         </div>
         
         <div class="footer-widget">

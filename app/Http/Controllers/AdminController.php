@@ -43,7 +43,7 @@ class AdminController extends Controller
 
         // biến admin_email sẽ lây tên trường admin trong form admin_login.blade.php
         $admin_email = $request->admin_email;
-        $admin_password = md5($request->admin_password);
+        $admin_password= md5($request->admin_password);
         // vào bảng  trong csdl , vs điều kiện admin_email = biến $admin_email. first: chỉ lấy 1 user
         $result = DB::table('tbl_admin')->where('admin_email',$admin_email)->where('admin_password',$admin_password)->first();
 
@@ -65,9 +65,10 @@ class AdminController extends Controller
 
      //  hàm logout
     public function logout(){
-        $this->AuthLogin();
-        Session::put('admin_name', null);
-        Session::put('admin_id',null);
+        // $this->AuthLogin();
+        // Session::put('admin_name', null);
+        // Session::put('admin_id',null);
+        Session::flush();
         return redirect('admin-login/');
     }
 
