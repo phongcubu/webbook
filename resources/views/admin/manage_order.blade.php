@@ -3,7 +3,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Liệt Kê Đơn Hàng
+        Quản Lý Đơn Hàng
       </div>
       <?php
       $message = Session::get('message');
@@ -45,7 +45,6 @@
               <th>Tên người đặt</th>
               <th>Tổng giá tiền</th>
               <th>Tình trạng</th>
-              <th>Hiển Thị</th>
             
               <th style="width:30px;"></th>
             </tr>
