@@ -71,14 +71,14 @@
                     
                     <div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
-							<ul class="nav nav-tabs">
+							<ul class="nav nav-tabs">	
 								<li class="active"><a href="#details" data-toggle="tab">Mô tả sản phẩm</a></li>
 								<li><a href="#companyprofile" data-toggle="tab">Chi tiết sản phẩm</a></li>
 								{{-- <li><a href="#reviews" data-toggle="tab">Đánh giá</a></li> --}}
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="details" >
+							<div class="tab-pane fade active in" id="details"  >
                                 <p>{!!$value->product_desc!!}</p>
 							</div>
 							<div class="tab-pane fade" id="companyprofile" >
