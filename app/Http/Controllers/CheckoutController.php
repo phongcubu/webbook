@@ -115,16 +115,16 @@ class CheckoutController extends Controller
         return Redirect::to('transaction');
     }
     //  trang thanh toán
-      public function transaction()
+    public function transaction()
      {  $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
         $category_post = CatePost::orderBy('category_post_id','DESC')->get();
         return view('pages.checkout.payment')->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$category_post);
      }
-
+//  oder transaction
      public function order_transaction_place(Request $request)
      {
-        // transaction
+        // chọn hình thức thanh toán
         $data = array();
         $data['transaction_method'] = $request->transaction_option;
         $data['transaction_status'] = 'Đang chờ xử lí';
@@ -173,6 +173,7 @@ class CheckoutController extends Controller
         }
         //return Redirect::to('transaction');
      }
+//  order transac
     //  tạo dữ liệu đổ vào
     public function createPayment(Request $request)
     {  
@@ -262,7 +263,8 @@ class CheckoutController extends Controller
         // lấy data từ bảng 
         $all_order = DB::table('tbl_order')
         ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
-        ->select('tbl_order.*','tbl_customers.customer_name')
+        ->join('tbl_transaction','tbl_order.transaction_id','=','tbl_transaction.transaction_id')
+        ->select('tbl_order.*','tbl_customers.customer_name','tbl_transaction.transaction_method')
         ->orderBy('tbl_order.order_id','desc')->paginate(6);
         // đưa ra hiển thị  với dữ liệu lấy được
         $manager_order = view('admin.manage_order')->with('all_order',$all_order);

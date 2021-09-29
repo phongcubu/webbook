@@ -3,7 +3,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Quản Lý Đơn Hàng
+        Liệt Kê Đơn Hàng
       </div>
       <?php
       $message = Session::get('message');
@@ -12,7 +12,7 @@
           Session::put("message",null);
       }
   ?>
-
+      
       <div class="table-responsive">
         <table class="table table-striped b-t b-light">
           <thead>
@@ -23,10 +23,14 @@
                 </label>
               </th>
               <th>Tên người đặt</th>
+              <th>Phương thức thanh toán</th>
+
               <th>Tổng giá tiền</th>
               <th>Tình trạng</th>
-            
+             
               <th style="width:30px;"></th>
+              <th>Chi tiết đơn </th>
+            
             </tr>
           </thead>
           <tbody>
@@ -34,15 +38,18 @@
             <tr>
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
               <td>{{$order->customer_name}}</td>
+              @if($order->transaction_method == 1)
+                <td>Thanh toán qua ATM</td>
+              @else
+                <td>Thanh toán qua khi nhận hàng</td>
+              @endif
               <td>{{$order->order_total}}</td>
               <td>{{$order->order_status}}<td>
-                <td> 
-                    <a href="{{URL::to('view-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
-                  <i class="fa fa-pencil-square-o text-success text-active"></i>
-                </a>
-                <a  onclick="return confirm('bạn chắc chắn muốn xóa đơn hàng không ?')" href="{{URL::to('delete-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
-                  <i class="fa fa-times text-danger text"></i>
-                </a>
+              <td> 
+                  <a href="{{URL::to('view-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
+                <i class="fa fa-pencil-square-o text-success text-active"></i>
+              </a>
+               
               </td>
             </tr>
             @endforeach
@@ -55,7 +62,7 @@
           
           <div class="col-sm-7 text-right text-center-xs" style="float:right">                
             <ul class="pagination pagination-sm m-t-none m-b-none">
-              {!!$all_order ->links()!!}
+           {!!$all_order ->links()!!}
             </ul>
           </div>
         </div>

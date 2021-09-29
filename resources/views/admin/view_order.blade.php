@@ -5,35 +5,22 @@
       <div class="panel-heading">
         Thông tin khách hàng
       </div>
-      <?php
-      $message = Session::get('message');
-      if($message){
-          echo $message;
-          Session::put("message",null);
-      }
-  ?>
+
       
       <div class="table-responsive">
         <table class="table table-striped b-t b-light">
           <thead>
             <tr>
-              
               <th>Tên khách hàng</th>
               <th>Số điện thoại</th>
-            
               <th style="width:30px;"></th>
             </tr>
           </thead>
           <tbody>
-              
             <tr>
-              
               <td>{{$order_by_id->customer_name}}</td>
               <td>{{$order_by_id->customer_phone}}</td>
-             
-               
             </tr>
-            
           </tbody>
         </table>
       </div>
@@ -46,13 +33,7 @@
       <div class="panel-heading">
         Thông tin vận chuyển
       </div>
-      <?php
-      $message = Session::get('message');
-      if($message){
-          echo $message;
-          Session::put("message",null);
-      }
-  ?>
+   
       
       <div class="table-responsive">
         <table class="table table-striped b-t b-light">
@@ -88,14 +69,6 @@
       <div class="panel-heading">
         Liệt Kê chi tiết đơn hàng
       </div>
-      <?php
-      $message = Session::get('message');
-      if($message){
-          echo $message;
-          Session::put("message",null);
-      }
-  ?>
-      
       <div class="table-responsive">
         <table class="table table-striped b-t b-light">
           <thead>

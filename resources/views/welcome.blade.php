@@ -90,7 +90,7 @@
                                 <?php
                                 }elseif($customer_id != NULL && $shipping_id!=NULL){
                                 ?>
-                                <li><a href="{{URL::to('payment')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
+                                <li><a href="{{URL::to('transaction')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
                                 <?php
                                 }else{
                                 ?>
@@ -103,11 +103,11 @@
                                 {{-- <li><a href="cart.html"><i class="fa fa-bell"></i> Lịch sử đơn hàng</a></li> --}}
                                 <?php 
                                 $customer_id = Session::get('customer_id');
-                                $customer_name = Session::get('customer_name');
+                                
                                 if ($customer_id != NULL) {
                                    
                                     ?>
-                                    <li><a href=""><i class="fa fa-user"></i><?php  echo $customer_name ?></a></li>
+                                   
                                     <li><a href="{{URL::to('logout-checkout')}}"><i class="fa fa-sign-out"></i>Đăng Xuất</a></li>
                                 <?php
                                 }else{

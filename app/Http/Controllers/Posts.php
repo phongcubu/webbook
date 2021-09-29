@@ -145,7 +145,7 @@ class Posts extends Controller
             $meta_title = $cate->category_post_name;
            
         }
-        $post_cate = Post::with('category_post')->where('post_status',1)->where('category_post_id',$cate_id)->paginate(7);
+        $post_cate = Post::with('category_post')->where('post_status',1)->where('category_post_id',$cate_id)->paginate(4);
 
         return view('pages.baiviet.danhmucbv')->with('meta_title',$meta_title)->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$cate_post)->with('search_product',$search_product)->with('post_cate',$post_cate);
       
