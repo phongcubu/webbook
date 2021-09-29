@@ -17,12 +17,7 @@
                     <a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}" class="btn btn-default add-to-cart" style="margin: 10px 0px">Xem chi tiết</a>
                 </div>
             </div>
-            <div class="choose">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="#"><i class="fa fa-plus-square"></i>Yêu thích</a></li>
-                    <li><a href="#"><i class="fa fa-plus-square"></i>So sánh</a></li>
-                </ul>
-            </div>
+          
         </div>
     </div>
     </a>

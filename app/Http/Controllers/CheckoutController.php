@@ -240,10 +240,10 @@ class CheckoutController extends Controller
         
         // insert thông tin vào bảng payment 
         $data = array();
-        $data['customer_id'] = $shipping;
-        $data['shipping_id'] = $customer;
+        $data['customer_id'] =$customer ;
+        $data['shipping_id'] = $shipping;
         $data['payment_code'] = $vnpayData['vnp_TxnRef'];
-        $data['payment_money'] =str_replace(',','', Cart::total(0));
+        $data['payment_money'] =str_replace(',','', \Cart::total(0));
         $data['payment_note'] = $vnpayData['vnp_OrderInfo'];
         $data['payment_vnp_response_code'] = $vnpayData['vnp_ResponseCode'];
         $data['payment_code_bank'] = $vnpayData['vnp_BankCode'];
@@ -258,16 +258,24 @@ class CheckoutController extends Controller
 
     return view('pages.vnpay.vnpay_return',compact('vnpayData'));
     }
+
     public function manage_order(){
         $this->AuthLogin();
-        // lấy data từ bảng 
+    //      thong tin oder
         $all_order = DB::table('tbl_order')
         ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
         ->join('tbl_transaction','tbl_order.transaction_id','=','tbl_transaction.transaction_id')
         ->select('tbl_order.*','tbl_customers.customer_name','tbl_transaction.transaction_method')
-        ->orderBy('tbl_order.order_id','desc')->paginate(6);
+        ->orderBy('tbl_order.order_id','desc')->paginate(5);
+
+    //  thong tin chuyen khoan
+        $all_payment = DB::table('tbl_payment')
+        ->join('tbl_customers','tbl_payment.customer_id','=','tbl_customers.customer_id')
+        ->select('tbl_payment.*','tbl_customers.customer_name')
+        ->orderBy('tbl_payment.payment_id','desc')->paginate(5);
+
         // đưa ra hiển thị  với dữ liệu lấy được
-        $manager_order = view('admin.manage_order')->with('all_order',$all_order);
+        $manager_order = view('admin.manage_order')->with('all_order',$all_order)->with('all_payment',$all_payment);
         return view('admin_layout')->with('admin.manage_order',$manager_order);
     }
   

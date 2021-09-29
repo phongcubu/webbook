@@ -1,18 +1,13 @@
 @extends('admin_layout')
 @section('admin_content')
+ {{--  bảng đơn hàng --}}
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
         Liệt Kê Đơn Hàng
       </div>
-      <?php
-      $message = Session::get('message');
-      if($message){
-          echo $message;
-          Session::put("message",null);
-      }
-  ?>
-      
+     
+     
       <div class="table-responsive">
         <table class="table table-striped b-t b-light">
           <thead>
@@ -47,7 +42,7 @@
               <td>{{$order->order_status}}<td>
               <td> 
                   <a href="{{URL::to('view-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
-                <i class="fa fa-pencil-square-o text-success text-active"></i>
+                <i class="fa fa-file-text-o text-success text-active" style="font-size: 26px;margin-left: 20px;"></i>
               </a>
                
               </td>
@@ -56,17 +51,70 @@
           </tbody>
         </table>
       </div>
+
+     
       <footer class="panel-footer">
         <div class="row">
           
           
           <div class="col-sm-7 text-right text-center-xs" style="float:right">                
             <ul class="pagination pagination-sm m-t-none m-b-none">
-           {!!$all_order ->links()!!}
+            {!!$all_order ->links()!!} 
             </ul>
           </div>
         </div>
       </footer>
     </div>
+ </div>
+
+ <div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+          liệt Kê thanh toán của khách hàng
+      </div>
+    {{-- bảng giao dịch thanh toán --}}
+    <div class="table-responsive">
+      <table class="table table-striped b-t b-light">
+        <thead>
+          <tr>
+            
+            <th>Mã đơn hàng giao dịch</th>
+            <th>Tên người đặt</th>
+            <th>Số tiền thanh toán</th>
+            <th>Ghi chú đơn hàng</th>
+            <th>Mã giao dịch tại vnpay</th>
+            <th></th>
+            <th>Mã ngân hàng</th>
+            <th>Thời gian giao dịch</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($all_payment as $key =>$payment)
+          <tr>
+          
+            <td>{{$payment->payment_code}}</td>
+            <td>{{$payment->customer_name}}</td>
+            <td>{{number_format($payment->payment_money).' '.'vnđ'}}</td>
+            <td>{{$payment->payment_note}}</td>
+            <td>{{$payment->payment_code_vnpay}}<td>
+            <td>{{$payment->payment_code_bank}}</td>
+            <td>{{$payment->payment_time}}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+    <footer class="panel-footer">
+      <div class="row">
+        
+        
+        <div class="col-sm-7 text-right text-center-xs" style="float:right">                
+          <ul class="pagination pagination-sm m-t-none m-b-none">
+          {!!$all_payment->links()!!} 
+          </ul>
+        </div>
+      </div>
+    </footer>
   </div>
+</div>
 @endsection

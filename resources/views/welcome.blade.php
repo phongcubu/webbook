@@ -127,7 +127,7 @@
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-5">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="sr-only">Toggle navigation</span>
@@ -154,14 +154,25 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    {{-- <div class="col-sm-4">
                         <form action="{{URL::to('search')}}" method="POST">
                             {{ csrf_field() }}
                             <div class="search_box pull-right">
                                 <input type="text" name="keywords" placeholder="tìm kiếm sản phẩm"/>
                                 <input type="submit" style="width: 27%;border-radius: 7px; margin-top:0px;color:black" value="tìm kiếm" name="search_items" class="btn btn-primary btn-small">
                             </div>
-                        </div></form>
+                        </form>
+                    </div> --}}
+                    <div class="col-sm-7">
+						<div class="col-sm-7 agileits_search search_box pull-right " style="margin-top: -10px;">
+							<form action="{{URL::to('search')}}" method="POST" style="display: inline-flex;">
+                                {{ csrf_field() }}
+								<input style="width: 239px; margin-right: 4px;" class="form-control mr-sm-2" name="keywords" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search" required>
+								<button class="btn my-2 my-sm-0" name="search_btn" type="submit">Tìm kiếm</button>
+							</form>
+						</div>
+						<!-- //search -->
+                    </div>
                         
                 </div>
             </div>

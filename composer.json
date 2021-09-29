@@ -62,9 +62,5 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true <<
-        << << < HEAD
-} ===
-=== =
-} >>>
->>> > d2314d8e62752774c148942dbe50cb16664de612
+    "prefer-stable": true
+}
