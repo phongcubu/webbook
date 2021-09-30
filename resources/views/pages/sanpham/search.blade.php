@@ -11,10 +11,10 @@
                     <img src="{{URL::to('public/uploads/product/'.$product->product_image)}}" alt="" />
                     <div class="product-detail-text" style=" height: 80px; ">
                     <p>{{$product->product_name}}</p>
-                    <h2 style="font-size: 17px;color:">{{number_format($product->product_price).' '.'vnđ'}}</h2>
+                    <h2 style="font-size: 17px;">{{number_format($product->product_price).' '.'vnđ'}}</h2>
                     
                     </div>
-                    <a href="#" class="btn btn-default add-to-cart" style="margin: 10px 0px"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                    <a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}" class="btn btn-default add-to-cart" style="margin: 10px 0px">Xem chi tiết</a>
                 </div>
             </div>
             <div class="choose">

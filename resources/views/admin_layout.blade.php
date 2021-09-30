@@ -32,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
 <script src="{{asset('public/backend/js/raphael-min.js')}}"></script>
 <script src="{{asset('public/backend/js/morris.js')}}"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
 
@@ -136,15 +136,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
 				<li class="sub-menu">
-<<<<<<< HEAD
-                    <a href="javascript:;">
-                        <i class="fa fa-newspaper-o"></i>
-                        <span>Danh Mục Bài Viết</span>
-=======
 					<a href="javascript:;">
-						<i class="fa fa-book"></i>
+						<i class="fa fa-archive"></i>
                         <span>Sản phẩm</span>
->>>>>>> bc0555be5d089a6bdd0cfae6f73be29cb9c87e4e
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('add-product')}}">Thêm sản phẩm</a></li>
@@ -165,13 +159,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</li>
 				<li class="sub-menu">
                     <a href="javascript:;">
-<<<<<<< HEAD
-                        <i class="fa fa-archive"></i>
-                        <span>Sản phẩm</span>
-=======
-                        <i class="fa fa-book"></i>
+                        <i class="fa fa-newspaper-o"></i>
                         <span>Bài Viết</span>
->>>>>>> bc0555be5d089a6bdd0cfae6f73be29cb9c87e4e
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('add-post')}}">Thêm bài viết</a></li>
@@ -204,6 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('public/backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
 <script src="{{asset('public/backend/js/scripts.js')}}"></script>
 <script src="{{asset('public/backend/js/jquery.slimscroll.js')}}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{asset('public/backend/js/jquery.nicescroll.js')}}"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{{asset('public/backend/js/flot-chart/excanvas.min.js')}}"></script><![endif]-->
 <script src="{{asset('public/backend/js/jquery.scrollTo.js')}}"></script>
@@ -262,6 +252,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 <!-- calendar -->
 	<script type="text/javascript" src="{{asset('public/backend/js/monthly.js')}}"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#datepicker").datepicker({
+				prevText:"Tháng trước",
+				nextText:"Tháng sau",
+				dateFormat:"yy-mm-dd",
+				dayNamesMin:["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"],
+				duration:"slow"
+			});
+			$("#datepicker2").datepicker({
+				prevText:"Tháng trước",
+				nextText:"Tháng sau",
+				dateFormat:"yy-mm-dd",
+				dayNamesMin:["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"],
+				duration:"slow"
+			});
+		}
+		);
+	</script>
 	<script type="text/javascript">
 		$(window).load( function() {
 

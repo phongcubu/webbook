@@ -13,15 +13,10 @@ class HomeControllers extends Controller
     public function home(){
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
-<<<<<<< HEAD
-        $all_product = DB::table('tbl_product')->where('product_status','1')->orderBy('product_id','desc')->paginate(9);
-        return view('pages.home')->with('category',$cate_product)->with('brand',$brand_product)->with('all_product',$all_product);
-=======
        //category post
         $category_post = CatePost::orderBy('category_post_id','DESC')->get();
         $all_product = DB::table('tbl_product')->where('product_status','1')->orderBy('product_id','desc')->paginate(9);
         return view('pages.home')->with('category',$cate_product)->with('brand',$brand_product)->with('all_product',$all_product)->with('cate_post',$category_post);
->>>>>>> bc0555be5d089a6bdd0cfae6f73be29cb9c87e4e
     }
    
     public function search(Request $request)

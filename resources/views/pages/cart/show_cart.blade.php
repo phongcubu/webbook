@@ -4,16 +4,14 @@
     <div class="">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-              <li><a href="{{URL::to('/')}}">Trang chủ</a></li>
-              <li class="active">Giỏ hàng của bạn</li>
+                <li><a href="{{URL::to('/')}}">Trang chủ</a></li>
+                <li class="active">Giỏ hàng của bạn</li>
             </ol>
         </div>
         <div class="table-responsive cart_info">
             <?php  
             //  lay dc tat ca khi min them vao gio han
-             $content=Cart::content();
-             
-             
+            $content=Cart::content();
             ?> 
             <table class="table table-condensed">
                 <thead>
@@ -30,11 +28,9 @@
                     @foreach($content as $v_content) 
                     <tr>
                         <td class="cart_product">
-                           
                             <a href=""><img src="{{URL::to('public/uploads/product/'.$v_content->options->image)}}" width="50" alt="" /></a>
                         </td>
                         <td class="cart_description">
-                           
                             <h4><a href=""></a>{{$v_content->name}}</h4> 
                             <p>mã sản phẩm:{{$v_content->id}}</p>
                         </td>
