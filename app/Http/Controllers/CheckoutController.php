@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Helpers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -107,20 +108,23 @@ class CheckoutController extends Controller
         
         $shipping_id  = DB::table('tbl_shipping')->insertGetId($data);
         Session::put('shipping_id',$shipping_id);
+        Session::put('shipping_name',$request->shipping_name);
+     
+
         
         return Redirect::to('transaction');
     }
     //  trang thanh toán
-      public function transaction()
+    public function transaction()
      {  $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
         $category_post = CatePost::orderBy('category_post_id','DESC')->get();
         return view('pages.checkout.payment')->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$category_post);
      }
-
+//  oder transaction
      public function order_transaction_place(Request $request)
      {
-        // transaction
+        // chọn hình thức thanh toán
         $data = array();
         $data['transaction_method'] = $request->transaction_option;
         $data['transaction_status'] = 'Đang chờ xử lí';
@@ -152,9 +156,10 @@ class CheckoutController extends Controller
             $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
             $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
             $category_post = CatePost::orderBy('category_post_id','DESC')->get();
-            $total_money= Cart::total(0,',','.');
+            $total_money= str_replace(',','', Cart::total(0)); 
             Session::get('shipping_id');
             Session::get('customer_id');
+           
             
             return view('pages.vnpay.vnpay_index',compact('total_money'))->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$category_post);
         }
@@ -168,20 +173,23 @@ class CheckoutController extends Controller
         }
         //return Redirect::to('transaction');
      }
+//  order transac
     //  tạo dữ liệu đổ vào
     public function createPayment(Request $request)
     {  
-       
-        $vnp_TxnRef = $request->order_id; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_TmnCode = "RIPX3MWD"; //Mã website tại VNPAY 
+        $vnp_HashSecret = "ZUTFDGSKXRDNEVRIJRCJCMJPYDZJWTWP"; //Chuỗi bí mật
+        $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_TxnRef = randString(15); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
         $vnp_OrderInfo = $request->order_desc;
         $vnp_OrderType = $request->order_type;
-        $vnp_Amount = Cart::total(0,',','.');
+        $vnp_Amount = str_replace(',','', \Cart::total(0)) * 100;
         $vnp_Locale = $request->language;
-        $vnp_BankCode = $request->bank_code;
+        $vnp_BankCode =  $request->bank_code;
         $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
         $inputData = array(
             "vnp_Version" => "2.1.0",
-            "vnp_TmnCode" => env('VNP_TMN_CODE'),
+            "vnp_TmnCode" => $vnp_TmnCode,
             "vnp_Amount" => $vnp_Amount,
             "vnp_Command" => "pay",
             "vnp_CreateDate" => date('YmdHis'),
@@ -203,40 +211,71 @@ class CheckoutController extends Controller
         $hashdata = "";
         foreach ($inputData as $key => $value) {
             if ($i == 1) {
-                $hashdata .= '&' . $key . "=" . $value;
+                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
             } else {
-                $hashdata .= $key . "=" . $value;
+                $hashdata .= urlencode($key) . "=" . urlencode($value);
                 $i = 1;
             }
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
-        
-        $vnp_Url = env('VNP_URL') . "?" . $query;
-        if (env('VNP_HASH_SECRET')){
-            // $vnpSecureHash = md5(env('VNP_HASH_SECRET') . $hashdata);
-            $vnpSecureHash = hash('sha256', env('VNP_HASH_SECRET') . $hashdata);
-            $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
-         }
-   
+
+        $vnp_Url = $vnp_Url . "?" . $query;
+
+        if (isset($vnp_HashSecret)) {
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
+            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+        }
+       
         return Redirect::to($vnp_Url);
          
     }
     //  hàm trả về kết quả khi thanh toán xong 
     public function vnpayReturn(Request $request)
-    {
-        dd($request->toArray());
+    {   if($request->vnp_ResponseCode == "00"){
+        $vnpayData = $request->all();
+        // dd( $vnpayData);
+       
+        $shipping = Session::get('shipping_id');
+        $customer = Session::get('customer_id');
         
-        // return view('pages.vnpay.vnpay_return');
+        // insert thông tin vào bảng payment 
+        $data = array();
+        $data['customer_id'] =$customer ;
+        $data['shipping_id'] = $shipping;
+        $data['payment_code'] = $vnpayData['vnp_TxnRef'];
+        $data['payment_money'] =str_replace(',','', \Cart::total(0));
+        $data['payment_note'] = $vnpayData['vnp_OrderInfo'];
+        $data['payment_vnp_response_code'] = $vnpayData['vnp_ResponseCode'];
+        $data['payment_code_bank'] = $vnpayData['vnp_BankCode'];
+        $data['payment_code_vnpay'] = $vnpayData['vnp_TransactionNo'];
+        $data['payment_time'] = date('Y-m-d H:i', strtotime($vnpayData['vnp_PayDate']));
+    
+        DB::table('tbl_payment')->insert($data);
+    
     }
+    Session::put('message', " thanh toán thành công! ");
+    Cart::destroy();
+
+    return view('pages.vnpay.vnpay_return',compact('vnpayData'));
+    }
+
     public function manage_order(){
         $this->AuthLogin();
-        // lấy data từ bảng 
+    //      thong tin oder
         $all_order = DB::table('tbl_order')
         ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
-        ->select('tbl_order.*','tbl_customers.customer_name')
-        ->orderBy('tbl_order.order_id','desc')->paginate(6);
+        ->join('tbl_transaction','tbl_order.transaction_id','=','tbl_transaction.transaction_id')
+        ->select('tbl_order.*','tbl_customers.customer_name','tbl_transaction.transaction_method')
+        ->orderBy('tbl_order.order_id','desc')->paginate(5);
+
+    //  thong tin chuyen khoan
+        $all_payment = DB::table('tbl_payment')
+        ->join('tbl_customers','tbl_payment.customer_id','=','tbl_customers.customer_id')
+        ->select('tbl_payment.*','tbl_customers.customer_name')
+        ->orderBy('tbl_payment.payment_id','desc')->paginate(5);
+
         // đưa ra hiển thị  với dữ liệu lấy được
-        $manager_order = view('admin.manage_order')->with('all_order',$all_order);
+        $manager_order = view('admin.manage_order')->with('all_order',$all_order)->with('all_payment',$all_payment);
         return view('admin_layout')->with('admin.manage_order',$manager_order);
     }
   

@@ -36,7 +36,7 @@ class ProductController extends Controller
         $all_product = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id','=','tbl_product.category_id')
         ->join('tbl_brand','tbl_brand.brand_id','=','tbl_product.brand_id')
-        ->orderBy('tbl_product.brand_id','desc')->paginate(5);
+        ->orderBy('tbl_product.brand_id','desc')->get();
         // đưa ra hiển thị  với dữ liệu lấy được
         $manager_product = view('admin.all_product')->with('all_product',$all_product);
         return view('admin_layout')->with('admin.all_product',$manager_product);
@@ -52,6 +52,7 @@ class ProductController extends Controller
         $data['product_name'] = $request->product_name;
         $data['product_price'] = $request->product_price;
         $data['product_price_sale'] = $request->product_price_sale;
+        $data['product_stock'] = $request->product_stock;
         $data['product_desc'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->product_cate;
@@ -123,6 +124,7 @@ class ProductController extends Controller
             $data['product_name'] = $request->product_name;
             $data['product_price'] = $request->product_price;
             $data['product_price_sale'] = $request->product_price_sale;
+            $data['product_stock'] = $request->product_stock;
             $data['product_desc'] = $request->product_desc;
             $data['product_content'] = $request->product_content;
             $data['category_id'] = $request->product_cate;

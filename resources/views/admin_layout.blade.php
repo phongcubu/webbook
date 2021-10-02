@@ -24,9 +24,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{{asset('public/backend/css/font.css')}}" type="text/css"/>
 <link href="{{asset('public/backend/css/font-awesome.css')}}" rel="stylesheet"> 
 <link rel="stylesheet" href="{{asset('public/backend/css/morris.css')}}" type="text/css"/>
+<link rel="stylesheet" href="">
 <!-- calendar -->
 <link rel="stylesheet" href="{{asset('public/backend/css/monthly.css')}}">
 <!-- //calendar -->
+<!-- filter table -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <!-- //font-awesome icons -->
 <script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
 <script src="{{asset('public/backend/js/jquery2.0.3.min.js')}}"></script>
@@ -351,10 +354,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					//In slug ra textbox có id “slug”
 				document.getElementById('convert_slug').value = slug;
 			}
-			 
-	
-	   
-	   
+			
 	</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+ 
+<script>
+    $(document).ready(function () {
+        $('#table1').DataTable();
+    });
+</script>
 </body>
 </html>

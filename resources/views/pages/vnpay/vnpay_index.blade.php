@@ -35,10 +35,10 @@
                             <option value="other">Khác - Xem thêm tại VNPAY</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="order_id">Mã hóa đơn</label>
                         <input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="amount">Số tiền</label>
                         <input class="form-control" id="amount"
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Nội dung thanh toán</label>
-                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2">Noi dung thanh toan</textarea>
+                        <textarea class="form-control" cols="20" id="order_desc" name="order_desc" rows="2"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="bank_code">Ngân hàng</label>

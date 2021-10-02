@@ -34,6 +34,11 @@
                             placeholder="Giá sản phẩm">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Số lượng</label>
+                            <input type="text" class="form-control" name="product_stock" id="exampleInputEmail1" 
+                            placeholder="Số Lượng sản phẩm">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
                             <input type="file" class="form-control image-preview" name="product_image" id="exampleInputEmail1" 
                             placeholder="Hình ảnh sản phẩm" onchange="previewFile(this);">

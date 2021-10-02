@@ -15,7 +15,7 @@ class CreateTblPayment extends Migration
     {
         Schema::create('tbl_payment', function (Blueprint $table) {
             $table->increments('payment_id');
-            $table->integer('order_id');
+            $table->integer('shipping_id');
             $table->integer('customer_id');
             $table->float('payment_money')->comment('số tiền cần thanh toán');
             $table->string('payment_note')->comment('ghi chú  thanh toán');

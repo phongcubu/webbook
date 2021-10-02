@@ -90,7 +90,7 @@
                                 <?php
                                 }elseif($customer_id != NULL && $shipping_id!=NULL){
                                 ?>
-                                <li><a href="{{URL::to('payment')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
+                                <li><a href="{{URL::to('transaction')}}"><i class="fa fa-credit-card"></i> Thanh Toán</a></li>
                                 <?php
                                 }else{
                                 ?>
@@ -103,11 +103,11 @@
                                 {{-- <li><a href="cart.html"><i class="fa fa-bell"></i> Lịch sử đơn hàng</a></li> --}}
                                 <?php 
                                 $customer_id = Session::get('customer_id');
-                                $customer_name = Session::get('customer_name');
+                                
                                 if ($customer_id != NULL) {
                                    
                                     ?>
-                                    <li><a href=""><i class="fa fa-user"></i><?php  echo $customer_name ?></a></li>
+                                   
                                     <li><a href="{{URL::to('logout-checkout')}}"><i class="fa fa-sign-out"></i>Đăng Xuất</a></li>
                                 <?php
                                 }else{
@@ -127,7 +127,7 @@
         <div class="header-bottom"><!--header-bottom-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-5">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="sr-only">Toggle navigation</span>
@@ -154,14 +154,25 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    {{-- <div class="col-sm-4">
                         <form action="{{URL::to('search')}}" method="POST">
                             {{ csrf_field() }}
                             <div class="search_box pull-right">
                                 <input type="text" name="keywords" placeholder="tìm kiếm sản phẩm"/>
                                 <input type="submit" style="width: 27%;border-radius: 7px; margin-top:0px;color:black" value="tìm kiếm" name="search_items" class="btn btn-primary btn-small">
                             </div>
-                        </div></form>
+                        </form>
+                    </div> --}}
+                    <div class="col-sm-7">
+						<div class="col-sm-7 agileits_search search_box pull-right " style="margin-top: -10px;">
+							<form action="{{URL::to('search')}}" method="POST" style="display: inline-flex;">
+                                {{ csrf_field() }}
+								<input style="width: 239px; margin-right: 4px;" class="form-control mr-sm-2" name="keywords" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search" required>
+								<button class="btn my-2 my-sm-0" name="search_btn" type="submit">Tìm kiếm</button>
+							</form>
+						</div>
+						<!-- //search -->
+                    </div>
                         
                 </div>
             </div>
@@ -182,10 +193,12 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="col-sm-4">
-                                    <h1><span>PSP</span>-BOOK</h1>
-                                    <h2>Free E-Commerce Template</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Bắt đầu mua</button>
+                                    
+                                        <h1><span>PSP</span>-BOOK</h1>
+                                            <h2>Sách Cho Người Việt - Trí Tuệ Việt</h2>
+                                            <p>Đem cả kho tàng tri thức nhân loại tới cho bạn đọc  hơn </p>
+                                            <button style="margin-top: 0px;" type="button" class="btn btn-default get">Lựa Chọn Ngay</button>
+                                       
                                 </div>
                                 <div class="col-sm-8">
                                     <img src="{{asset('public/frontend/images/shop/baner/banner2.jpg')}}" class="girl img-responsive" alt="" />
@@ -195,9 +208,9 @@
                             <div class="item">
                                 <div class="col-sm-4">
                                     <h1><span>PSP</span>-BOOK</h1>
-                                    <h2>100% MẪU SÁCH ĐƯỢC CHỌN LỰA TỐT NHẤT</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Bắt đầu mua</button>
+                                        <h2>Sách Cho Người Việt - Trí Tuệ Việt</h2>
+                                        <p>Đem cả kho tàng tri thức nhân loại tới cho bạn đọc  hơn </p>
+                                        <button style="margin-top: 0px;" type="button" class="btn btn-default get">Lựa Chọn Ngay</button>
                                 </div>
                                 <div class="col-sm-8">
                                     <img src="{{asset('public/frontend/images/shop/baner/banner1.jpg')}}" class="girl img-responsive" alt="" />
@@ -208,9 +221,9 @@
                             <div class="item">
                                 <div class="col-sm-4">
                                     <h1><span>PSP</span>-BOOK</h1>
-                                    <h2>Thư Viện ĐỌ</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                    <button type="button" class="btn btn-default get">Bắt đầu mua</button>
+                                        <h2>Sách Cho Người Việt - Trí Tuệ Việt</h2>
+                                        <p>Đem cả kho tàng tri thức nhân loại tới cho bạn đọc  hơn </p>
+                                        <button style="margin-top: 0px;" type="button" class="btn btn-default get">Lựa Chọn Ngay</button>
                                 </div>
                                 <div class="col-sm-8">
                                     <img src="{{asset('public/frontend/images/shop/baner/banner3.jpg')}}" class="girl img-responsive" alt="" />

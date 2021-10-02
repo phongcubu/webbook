@@ -37,6 +37,11 @@
                                     placeholder="Giá sản phẩm" value="{{$pro->product_price_sale}}">
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Số lượng</label>
+                                    <input type="text" class="form-control" name="product_stock" id="exampleInputEmail1" 
+                                    placeholder="Số Lượng sản phẩm">
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
                                     <input type="file" class="form-control" name="product_image" id="exampleInputEmail1">
                                     <img src="{{URL::to('public/uploads/product/'.$pro->product_image)}}" height="100" width="100">
@@ -78,8 +83,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Hiển thị</label>
                                     <select name="product_status" class="form-control input-lg m-bot15">
-                                        <option value="0">ẩn </option>
                                         <option value="1">hiện</option>
+                                        <option value="0">ẩn </option>
                                     </select>
                                 </div>
                                 
