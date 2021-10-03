@@ -4,7 +4,7 @@
 <div class="table-agile-info">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Liệt Kê Đơn Hàng
+        Quản Lý Đơn Hàng
       </div>
      
      
