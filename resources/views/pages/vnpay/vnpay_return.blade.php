@@ -25,7 +25,7 @@
                     echo $message;
                     Session::put("message",null);
                 }
-            ?>
+                ?>
             </div>
             <div class="table-responsive">
                 <div class="form-group">

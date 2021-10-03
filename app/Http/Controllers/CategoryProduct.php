@@ -33,7 +33,7 @@ class CategoryProduct extends Controller
     public function all_category_product(){
         $this->AuthLogin();
         // lấy data từ bảng 
-        $all_category_product = DB::table('tbl_category_product')->paginate(5);
+        $all_category_product = DB::table('tbl_category_product')->paginate(9);
         // đưa ra hiển thị  với dữ liệu lấy được
         $manager_category_product = view('admin.all_category_product')->with('all_category_product',$all_category_product);
         return view('admin_layout')->with('admin.all_category_product',$manager_category_product);
