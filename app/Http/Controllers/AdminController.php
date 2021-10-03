@@ -34,7 +34,17 @@ class AdminController extends Controller
     // hàm hiển thị trang thống kê , điều khiển
     public function show_dashboard(){
         $this->AuthLogin();
-        return view('admin.dashboard');
+        $sp = DB::table('tbl_product')->count();
+        $kh = DB::table('tbl_customers')->count();
+        $dh = DB::table('tbl_order')->count();
+        $tt = DB::table('tbl_posts')->count();
+        if(request()->date1 && request()->date2){
+            $sp = DB::table('tbl_product')->orWhereBetween('created_at',[request()->date1,request()->date2])->count();
+            $kh = DB::table('tbl_customers')->orWhereBetween('time_kh',[request()->date1,request()->date2])->count();
+            $dh = DB::table('tbl_order')->orWhereBetween('time_order',[request()->date1,request()->date2])->count();
+            $tt = DB::table('tbl_posts')->orWhereBetween('time_tt',[request()->date1,request()->date2])->count();
+        }
+        return view('admin.dashboard', compact('sp','kh','dh','tt'));
     }
 
     //  hàm login hiển thị trang điều khiển khi đăng nhập thành công
@@ -70,6 +80,15 @@ class AdminController extends Controller
         // Session::put('admin_id',null);
         Session::flush();
         return redirect('admin-login/');
+    }
+
+     // --hàm xử lí liệt kê ra thương hiệu sản phảm
+    public function all_user(){
+        $this->AuthLogin();
+        // lấy data từ bảng 
+        $all_user = DB::table('tbl_customers')->paginate(5);
+       
+        return view('admin.all_user')->with('all_user',  $all_user);
     }
 
 

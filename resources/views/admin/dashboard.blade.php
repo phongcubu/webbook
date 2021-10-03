@@ -10,32 +10,87 @@
     </style>
 </div>
 <div class="row">
-    <p class="title_thongke">THỐNG KÊ ĐƠN HÀNG DOANH SỐ</p>
+    <p class="title_thongke">THỐNG KÊ THÔNG TIN CỦA SHOP</p>
     <form autocomplete="off">
         @csrf
         <div class="col-md-2">
-            <p>Từ ngày:<input type="text" id="datepicker" class="form-control"></p><br>
-            <input type="button" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="Lọc kết quả"></p>
+            <p>Từ ngày:<input type="date" name="date1" class="form-control"></p>
         </div>
         <div class="col-md-2">
-            <p>Đến ngày:<input type="text" id="datepicker2" class="form_control"></p>
-        </div>
-        <div class="col-md-2">
-            <p>
-                Lọc theo:<br>
-                <select class="dashboard-filter form_control">
-                    <option>---Chọn---</option>
-                    <option>7 ngày qua</option>
-                    <option>Tháng trước</option>
-                    <option>Tháng này</option>
-                    <option>1 năm qua</option>
-                </select>
-            </p>
-        </div>
+            <p>Đến ngày:<input type="date" name="date2" class="form_control"></p>
+        </div><br>
+        <button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button><a href="{{URL::to('dashboard/')}}" type="button" class="btn btn-success"><span class = "glyphicon glyphicon-refresh"><span></a>
     </form>
-    <div class="col-md-12">
-        <div id="myfirschart" style="height: 250px;"></div>
-    </div>
+</div>
+<div class="market-updates">
+	<div class="col-md-3 market-update-gd">
+		<div class="market-update-block clr-block-2">
+			<a href="{{URL::to('all-product/')}}">
+				<div class="col-md-4 market-update-right">
+					<i class="fa fa-eye"> </i>
+				</div>
+				<div class="col-md-8 market-update-left">
+				    <h4>Sản phẩm</h4>
+					<h3>
+						{{$sp}}
+					</h3>
+					<p>Đang được bán</p>
+				</div>
+				<div class="clearfix"> </div>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-3 market-update-gd">
+		<div class="market-update-block clr-block-1">
+			<a href="{{URL::to('all-user/')}}">
+				<div class="col-md-4 market-update-right">
+					<i class="fa fa-users" ></i>
+				</div>
+				<div class="col-md-8 market-update-left">
+                    <h4>Khách hàng</h4>
+                    <h3>
+                        {{$kh}}
+                    </h3>
+                    <p>Đã đăng ký</p>
+				</div>
+				<div class="clearfix"> </div>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-3 market-update-gd">
+		<div class="market-update-block clr-block-3">
+			<a href="{{URL::to('all-post')}}">
+				<div class="col-md-4 market-update-right">
+					<i class="fa fa-newspaper-o fa-3x" style="color: white;"></i>
+				</div>
+				<div class="col-md-8 market-update-left">
+					<h4>Số Tin Tức</h4>
+					<h3>
+                    {{$tt}}
+					</h3>
+					<p>Đã đăng lên</p>
+				</div>
+			    <div class="clearfix"> </div>
+			</a>
+		</div>
+	</div>
+	<div class="col-md-3 market-update-gd">
+		<div class="market-update-block clr-block-4">
+			<a href="{{URL::to('manage-order/')}}">
+				<div class="col-md-4 market-update-right">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+				</div>
+				<div class="col-md-8 market-update-left">
+					<h4>Số đơn hàng</h4>
+						<h3>
+                        {{$dh}}
+						</h3>
+						<p>Đã bán</p>
+				</div>
+				<div class="clearfix"> </div>
+			</a>
+		</div>
+	</div>
 </div>
 <section class="wrapper">
     </section>

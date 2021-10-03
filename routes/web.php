@@ -77,7 +77,6 @@ Route::get('all-category-post/', [PostController::class, 'all_category_post'])->
 Route::get('edit-category-post/{category_post_id}',[PostController::class, 'edit_category_post'])->name('edit-category-post');
 // xóa danh mục sản phẩm trong liệt kê danh mục
 Route::get('delete-category-post/{category_post_id}',[PostController::class, 'deletee_category_post'])->name('delete-category-post');
-
 Route::post('save-category-post/',[PostController::class, 'save_category_post'])->name('save-category-post');
 Route::post('update-category-post/{category_post_id}',[PostController::class, 'update_category_post'])->name('update-category-post');
 
@@ -106,6 +105,8 @@ Route::get('edit-brand-product/{brand_product_id}',[BrandProduct::class, 'edit_b
 // xóa danh mục sản phẩm trong liệt kê danh mục
 Route::get('delete-brand-product/{brand_product_id}',[BrandProduct::class, 'deletee_brand_product'])->name('delete-brand-product');
 
+// ----- KHÁCH HÀNG
+Route::get('all-user/', [AdminController::class, 'all_user'])->name('all-user');
 
 // -----------Product---------
 Route::get('add-product/', [ProductController::class, 'add_product'])->name('add-product');
