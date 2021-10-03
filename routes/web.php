@@ -11,6 +11,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Posts;
 use App\Models\Post;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +26,10 @@ use App\Models\Post;
 
 //Fronend
 Route::get('/', [HomeControllers ::class, 'home']);
-
 Route::get('trang-chu/', [HomeControllers ::class, 'home'])->name('trang-chu');
-Route::get('contact/', [HomeControllers ::class, 'contact'])->name('contact');
 Route::post('search/', [HomeControllers ::class, 'search'])->name('search');
 
 //Danh muc san pham
-
 Route::get('danh-muc-san-pham/{category_id}', [CategoryProduct ::class, 'show_category_home']);
 Route::get('thuong-hieu-san-pham/{brand_id}', [BrandProduct ::class, 'show_brand_home']);
 Route::get('chi-tiet-san-pham/{product_id}', [ProductController ::class, 'details_product']);
@@ -46,6 +44,9 @@ Route::get('logout/', [AdminController::class, 'logout'])->name('logout');
 // vào trang chủ bảng điều khiển khi login
 Route::post('admin-dashbord/',[AdminController::class, 'dashboard'])->name('admin-dashbord');
 
+// -------------Contact
+Route::get('contact-form/', [ContactController::class, 'contactForm'])->name('contact-form');
+Route::post('contact-form/', [ContactController::class, 'storeContactForm'])->name('contact-form.store');
 
 // ----------- Category Product Dashboard---------
 //trang hiển danh mục sản phẩm

@@ -29,9 +29,5 @@ class HomeControllers extends Controller
         return view('pages.sanpham.search')->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$category_post)->with('search_product',$search_product);
     }
 
-    public function contact()
-    {
-
-        return view('pages.contact');
-    }
+    
 }

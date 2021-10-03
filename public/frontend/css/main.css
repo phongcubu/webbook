@@ -12,7 +12,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    /* background: ; */
+    /* background: #f0eded; */
     position: relative;
     font-weight: 400px;
 }
@@ -956,6 +956,7 @@ h2.title {
     border: 1px solid #F7F7F5;
     overflow: hidden;
     margin-bottom: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .product-image-wrapper:hover {
@@ -1035,7 +1036,7 @@ h2.title {
     transition: height 500ms ease 0s;
     width: 100%;
     display: block;
-    opacity:1 ;
+    opacity: 1;
 }
 
 .single-products:hover .product-overlay {
@@ -1306,11 +1307,13 @@ h2.title {
     position: relative;
 }
 
-.view-product img{
+.view-product img {
     border: 1px solid #F7F7F0;
     height: 273px;
     width: 100%;
 }
+
+
 /* zoomm hình */
 
 .zoom {
