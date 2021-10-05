@@ -17,7 +17,7 @@
                         }
                     ?>
                     @foreach($edit_product as $key => $pro);
-                    @endforeach
+                    
                     <div class="position-center">
                             <form role="form" action="{{URL::to('update-product/'.$pro->product_id)}}" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
@@ -94,6 +94,7 @@
                         
 
                     </div>
+                    @endforeach
                 </div>
             </section>
         </div>

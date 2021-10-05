@@ -99,6 +99,7 @@ class ProductController extends Controller
         $cate_product = DB::table('tbl_category_product')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->orderBy('brand_id','desc')->get();
         $category_post = CatePost::orderBy('category_post_id','DESC')->get();
+        
         // lấy data từ bảng 
         $edit_product = DB::table('tbl_product')->where('product_id',$product_id)->get();
         // đưa ra hiển thị  với dữ liệu lấy được

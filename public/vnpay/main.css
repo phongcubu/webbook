@@ -1,0 +1,95 @@
+.backgroud_payment {
+    background-color: aquamarine;
+    border-radius: 10px;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.text-muted {
+    font-size: 44px;
+    background: -webkit-linear-gradient(#ff0000, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.img-vnpay {
+    width: 104%;
+    /* margin: auto; */
+    margin-top: 75px;
+    height: 485px;
+    border-radius: 10px;
+}
+
+table {
+    width: 376px;
+    height: 376px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.td-title {
+    color: black;
+    font-weight: 700;
+}
+
+td {
+    padding: 16px;
+}
+
+.custom-btn {
+    width: 178px;
+    height: 40px;
+    color: rgb(46, 43, 43);
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.btn-15 {
+    background: #1cabe4;
+    border: none;
+    z-index: 1;
+}
+
+.btn-15:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #4416e9;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    transition: all 0.3s ease;
+}
+
+.btn-15:hover {
+    color: #fff;
+}
+
+.btn-15:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.btn-15:active {
+    top: 2px;
+}
+
+#footer {
+    background-color: darkgray;
+    margin-top: 78px;
+}

@@ -28,20 +28,7 @@ class CheckoutController extends Controller
         }
 
     }
-    public function view_order($orderId){
-        $this->AuthLogin();
-        // lấy data từ bảng 
-        $order_by_id = DB::table('tbl_order')
-        ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
-        ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
-        ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
-        ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')->first();
-      
-        // đưa ra hiển thị  với dữ liệu lấy được
-       $manager_order_by_id = view('admin.view_order')->with('order_by_id',$order_by_id);
-       return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
-        
-    }
+   
     public function login_checkout()
     {   $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
@@ -60,6 +47,8 @@ class CheckoutController extends Controller
         $customer_id = DB::table('tbl_customers')->insertGetId($data);
         Session::put('customer_id',$customer_id);
         Session::put('customer_name',$request->customer_name);
+        Session::put('customer_email',$request->customer_email);
+        Session::put('customer_phone',$request->customer_phone);
         return Redirect::to('checkout');
      
     }
@@ -70,8 +59,12 @@ class CheckoutController extends Controller
         $password = md5($request->password_account);
         $kq = DB::table('tbl_customers')->where('customer_email',$email)->where('customer_password',$password)->first();
         if($kq)
-        {
+        {  
             Session::put('customer_id',$kq->customer_id);
+            Session::put('customer_name',$kq->customer_name);
+            Session::put('customer_email',$kq->customer_email);
+            Session::put('customer_phone',$kq->customer_phone);
+            
             return Redirect::to('checkout');
         }
         else{
@@ -93,6 +86,10 @@ class CheckoutController extends Controller
         $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
         $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
         $category_post = CatePost::orderBy('category_post_id','DESC')->get();
+        Session::get('customer_id');
+        Session::get('customer_email');
+        Session::get('customer_phone');
+        Session::get('customer_name');
         return view('pages.checkout.show_checkout')->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$category_post);
     }
 
@@ -240,7 +237,7 @@ class CheckoutController extends Controller
         
         // insert thông tin vào bảng payment 
         $data = array();
-        $data['customer_id'] =$customer ;
+        $data['customer_id'] =$customer;
         $data['shipping_id'] = $shipping;
         $data['payment_code'] = $vnpayData['vnp_TxnRef'];
         $data['payment_money'] =str_replace(',','', \Cart::total(0));
@@ -257,6 +254,22 @@ class CheckoutController extends Controller
     Cart::destroy();
 
     return view('pages.vnpay.vnpay_return',compact('vnpayData'));
+    }
+
+    //  chi tiết đơn hàng
+    public function view_order($orderId){
+        $this->AuthLogin();
+        // lấy data từ bảng 
+        $order_by_id = DB::table('tbl_order')
+        ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
+        ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
+        ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
+        ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')->first();
+      
+        // đưa ra hiển thị  với dữ liệu lấy được
+       $manager_order_by_id = view('admin.view_order')->with('order_by_id',$order_by_id);
+       return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
+        
     }
 
     public function manage_order(){
