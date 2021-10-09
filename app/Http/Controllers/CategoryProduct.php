@@ -51,7 +51,7 @@ class CategoryProduct extends Controller
         $data['category_status'] = $request->category_product_status;
     // lưu dữ liệu vào database
         DB::table('tbl_category_product')->insert($data);
-        Session::put('message', " thêm danh mục thành công!");
+        \Toastr::success('Thêm danh mục thành công!', 'Thành Công');
         return Redirect::to("add-category-product");
     }
     // -- hàm xử lí nút nhấn ẩn hiện trong liệt kê danh mục sản phẩm
@@ -59,14 +59,14 @@ class CategoryProduct extends Controller
     {   $this->AuthLogin();
         DB::table('tbl_category_product')->where('category_id',$category_product_id)->update(['category_status' =>1]);
         
-        Session::put('message', " kích hoạt  danh mục thành công!");
+        
+        \Toastr::success('Kích hoạt danh mục', 'Thành Công');
         return Redirect::to("all-category-product");
     }
     public function unactive_category_product($category_product_id)
     {   $this->AuthLogin();
         DB::table('tbl_category_product')->where('category_id',$category_product_id)->update(['category_status' =>0]);
-        
-        Session::put('message', " Không kích hoạt  danh mục thành công!");
+        \Toastr::success('Không kích hoạt ', 'Thành Công');
         return Redirect::to("all-category-product");
     }
     // --- sửa xóa danh mục sản phẩm 
@@ -78,13 +78,7 @@ class CategoryProduct extends Controller
         $manager_category_product = view('admin.edit_category_product')->with('edit_category_product',$edit_category_product);
         return view('admin_layout')->with('admin.edit_category_product',$manager_category_product);
     }
-    public function delete_category_product($category_product_id)
-    {   $this->AuthLogin();
-        DB::table('tbl_category_product')->where('category_id',$category_product_id)->update(['category_status' =>0]);
-        
-        Session::put('message', " Không kích hoạt  danh mục thành công!");
-        return Redirect::to("all-category-product");
-    }
+
     // --- hàm Cập nhât danh mục 
     public function update_category_product(Request $request,$category_product_id){
         $this->AuthLogin();
@@ -96,14 +90,15 @@ class CategoryProduct extends Controller
             $data['category_desc'] = $request->category_product_desc;
         // lưu dữ liệu vào database
             DB::table('tbl_category_product')->where('category_id',$category_product_id)->update($data);
-            Session::put('message', " cập nhật danh mục thành công!");
+            \Toastr::success('Cập nhật danh mục thành công! ', 'Thành Công');
             return Redirect::to("all-category-product");
         }
     // --- hàm xóa danh mục sản phẩm 
     public function deletee_category_product($category_product_id){
         $this->AuthLogin();
             DB::table('tbl_category_product')->where('category_id',$category_product_id)->delete();
-            Session::put('message', " Xóa danh mục thành công!");
+       
+            \Toastr::success('Xóa danh mục thành công!', 'Thành Công');
             return Redirect::to("all-category-product");
         }
     //kết thúc hàm admin page

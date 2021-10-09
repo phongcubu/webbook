@@ -5,15 +5,7 @@
         <div class="panel-heading">
         Liệt Kê Sản Phẩm
         </div>
-    <?php
-    use Illuminate\Support\Facades\Session;
-        $message = Session::get('message');
-        if($message){
-            echo $message;
-            Session::put("message",null);
-        }
-    ?>
-   
+ 
         <div class="table-responsive">
             <table class="table table-striped b-t b-light" id="table1">
                 <thead>

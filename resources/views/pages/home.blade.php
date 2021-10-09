@@ -2,7 +2,7 @@
 @section('content')
 <div class="features_items"><!--features_items-->
    
-    <h2 class="title text-center">sản phẩm mới</h2>
+    <h2 class="title text-center">sản phẩm </h2>
    
     @foreach($all_product as $key => $product)
     <a href="{{URL::to('chi-tiet-san-pham/'.$product->product_id)}}">

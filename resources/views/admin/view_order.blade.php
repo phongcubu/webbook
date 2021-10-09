@@ -17,9 +17,12 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($order_by_id as $key => $order )
+              
+            @endforeach
             <tr>
-              <td>{{$order_by_id->customer_name}}</td>
-              <td>{{$order_by_id->customer_phone}}</td>
+              <td>{{$order->customer_name}}</td> 
+              <td>{{$order->customer_phone}}</td>
             </tr>
           </tbody>
         </table>
@@ -48,12 +51,14 @@
             </tr>
           </thead>
           <tbody>
+            @foreach ($order_by_id as $key => $order )
               
+            @endforeach
             <tr>
               
-              <td>{{$order_by_id->shipping_name}}</td>
-              <td>{{$order_by_id->shipping_address}}</td>
-              <td>{{$order_by_id->shipping_phone}}</td>
+              <td>{{$order->shipping_name}}</td>
+              <td>{{$order->shipping_address}}</td>
+              <td>{{$order->shipping_phone}}</td>
                
             </tr>
             
@@ -87,16 +92,18 @@
             </tr>
           </thead>
           <tbody>
-            
+            @foreach ($order_by_id as $key => $order )
+              
+         
             <tr>
                 
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td>{{$order_by_id->product_name}}</td>
-              <td>{{$order_by_id->product_sales_quantity}}</td>
-              <td>{{$order_by_id->product_price}}</td>
-              <td>{{$order_by_id->product_price*$order_by_id->product_sales_quantity}}</td>
+              <td>{{$order->product_name}}</td>
+              <td>{{$order->product_sales_quantity}}</td>
+              <td>{{number_format($order->product_price).' '.'vnđ'}}</td>
+              <td>{{number_format($order->product_price*$order->product_sales_quantity).' '.'vnđ'}}</td>
             </tr>
-           
+            @endforeach
           </tbody>
         </table>
       </div>

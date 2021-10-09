@@ -170,7 +170,8 @@ class CheckoutController extends Controller
         }
         //return Redirect::to('transaction');
      }
-//  order transac
+
+
     //  tạo dữ liệu đổ vào
     public function createPayment(Request $request)
     {  
@@ -264,11 +265,10 @@ class CheckoutController extends Controller
         ->join('tbl_customers','tbl_order.customer_id','=','tbl_customers.customer_id')
         ->join('tbl_shipping','tbl_order.shipping_id','=','tbl_shipping.shipping_id')
         ->join('tbl_order_details','tbl_order.order_id','=','tbl_order_details.order_id')
-        ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')->first();
-      
+        ->select('tbl_order.*','tbl_customers.*','tbl_shipping.*','tbl_order_details.*')->where('tbl_order.order_id',$orderId)->get();
         // đưa ra hiển thị  với dữ liệu lấy được
-       $manager_order_by_id = view('admin.view_order')->with('order_by_id',$order_by_id);
-       return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
+        $manager_order_by_id = view('admin.view_order')->with('order_by_id',$order_by_id);
+        return view('admin_layout')->with('admin.view_order',$manager_order_by_id);
         
     }
 

@@ -71,8 +71,8 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Hiển thị</label>
                             <select name="product_status" class="form-control input-lg m-bot15">
-                                <option value="0">ẩn </option>
                                 <option value="1">hiện</option>
+                                <option value="0">ẩn </option>
                             </select>
                         </div>
                         

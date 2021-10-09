@@ -44,7 +44,8 @@ class PostController extends Controller
     	$category_post->category_post_desc = $data['category_post_desc'];
     	$category_post->category_post_status = $data['category_post_status'];
     	$category_post->save();
-    	Session::put('message','Thêm danh mục bài viết thành công');
+   
+        \Toastr::success('Thêm danh mục bài viết thành công!','Thành Công');
     	return redirect()->back();
     }
 
@@ -58,22 +59,26 @@ class PostController extends Controller
     // --- hàm Cập nhât danh mục 
     public function update_category_post(Request $request,$category_post_id){
         $this->AuthLogin();
+
         $data = $request->all();
     	$category_post = CatePost::find($category_post_id);
     	$category_post->category_post_name = $data['category_post_name'];
     	$category_post->category_post_slug = $data['category_post_slug'];
-    
     	$category_post->category_post_desc = $data['category_post_desc'];
     	$category_post->category_post_status = $data['category_post_status'];
     	$category_post->save();
-    	Session::put('message','Cập nhật danh mục bài viết thành công');
+
+ 
+        \Toastr::success('Cập nhật danh mục bài viết thành công!','Thành Công');
     	return redirect('/all-category-post');
         }
      // --- hàm xóa danh mục bài viết
      public function deletee_category_post($category_post_id){
         $category_post = CatePost::find($category_post_id);
    		$category_post->delete();
-    	Session::put('message','Xóa danh mục bài viết thành công');
+
+        \Toastr::success('Xóa danh mục bài viết thành công!','Thành Công');
+    
     	return redirect()->back();
         }
 

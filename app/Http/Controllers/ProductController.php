@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Models\CatePost;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Brian2694\Toastr\Toastr;
 session_start();
 class ProductController extends Controller
 {
@@ -68,13 +69,13 @@ class ProductController extends Controller
             $get_image-> move('public/uploads/product',$new_image);
             $data['product_image'] = $new_image;
             DB::table('tbl_product')->insert($data);
-            Session::put('message', " thêm sản phẩm thành công!");
+            \Toastr::success('Thêm sản phẩm thành công!','Thành Công');
             return Redirect::to("add-product");
         }
         $date['product_image'] = '';
     // lưu dữ liệu vào database
         DB::table('tbl_product')->insert($data);
-        Session::put('message', " thêm sản phẩm thành công!");
+        \Toastr::success('Thêm sản phẩm thành công!','Thành Công');
         return Redirect::to("all-product");
 
     }
@@ -83,13 +84,16 @@ class ProductController extends Controller
     public function active_product($product_id)
     {   $this->AuthLogin();
         DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status' =>1]);
-        Session::put('message', " kích hoạt sản phẩm thành công!");
+    
+        \Toastr::success('Kích hoạt sản phẩm!','Thành Công');
         return Redirect::to("all-product");
     }
     public function unactive_product($product_id)
     {   $this->AuthLogin();
         DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status' =>0]);
-        Session::put('message', " Không kích hoạt sản phẩm thành công!");
+    
+        \Toastr::success('Không kích hoạt sản phẩm!','Thành Công');
+        
         return Redirect::to("all-product");
     }
 
@@ -107,13 +111,7 @@ class ProductController extends Controller
         ->with('brand_product',$brand_product)->with('cate_post',$category_post);
         return view('admin_layout')->with('admin.edit_product',$manager_product);
     }
-    public function delete_product($product_id)
-    {  $this->AuthLogin();
-        DB::table('tbl_product')->where('product_id',$product_id)->update(['product_status' =>0]);
-        
-        Session::put('message', " Không kích hoạt  thương hiệu thành công!");
-        return Redirect::to("all-product");
-    }
+
 
     // --- hàm Cập nhât thương hiệu 
     public function update_product(Request $request,$product_id){
@@ -140,12 +138,13 @@ class ProductController extends Controller
                 $get_image-> move('public/uploads/product',$new_image);
                 $data['product_image'] = $new_image;
                 DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-                Session::put('message', "cập nhật thành công!");
+                \Toastr::success('Cập nhật sản phẩm thành công!','Thành Công');
                 return Redirect::to('add-product');
             }
         // lưu dữ liệu vào database
             DB::table('tbl_product')->where('product_id',$product_id)->update($data);
-            Session::put('message', " cập nhật sản phẩm thành công!");
+
+            \Toastr::success('Cập nhật sản phẩm thành công!','Thành Công');
             return Redirect::to('all-product');
     
         }
@@ -153,7 +152,8 @@ class ProductController extends Controller
     public function deletee_product($product_id){
         $this->AuthLogin();
             DB::table('tbl_product')->where('product_id',$product_id)->delete();
-            Session::put('message', " Xóa sản phẩm thành công!");
+      
+            \Toastr::success('Xóa sản phẩm thành công!','Thành Công');
             return Redirect::to("all-product");
     
         }

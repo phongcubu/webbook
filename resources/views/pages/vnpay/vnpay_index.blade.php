@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-sm-4">
                    
-                    <img class="img-vnpay"  src="{{asset('public/frontend/images/VNPAY.png')}}" alt="">
+                    <img class="img-vnpay"  src="{{asset('public/frontend/images/shop/VNPAY.png')}}" alt="">
               
 
                 </div>
@@ -88,7 +88,6 @@
                                     <option value="en">English</option>
                                 </select>
                             </div>
-                            {{-- <button type="submit" class="btn btn-primary" id="btnPopup"></button> --}}
                             <button type="submit" class="btn btn-default" >Xác nhận thanh toán</button>
                         </form>
                     </div>

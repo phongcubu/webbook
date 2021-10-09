@@ -17,7 +17,7 @@
                 <thead>
                     <tr class="cart_menu">
                         <td class="image">Hình ảnh</td>
-                        <td class="description">Tên sản phẩm</td>
+                        <td class="description ">Tên sản phẩm</td>
                         <td class="price">Giá</td>
                         <td class="quantity">Số lượng</td>
                         <td class="total">Tổng</td>
@@ -31,7 +31,7 @@
                             <a href=""><img src="{{URL::to('public/uploads/product/'.$v_content->options->image)}}" width="50" alt="" /></a>
                         </td>
                         <td class="cart_description">
-                            <h4><a href=""></a>{{$v_content->name}}</h4> 
+                            <h4 style="width: 195px;text-align: left;"><a href=""></a>{{$v_content->name}}</h4> 
                             <p>mã sản phẩm:{{$v_content->id}}</p>
                         </td>
                         <td class="cart_price">
