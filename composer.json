@@ -6,7 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "brian2694/laravel-toastr": "^5.56",
         "bumbummen99/shoppingcart": "^4.0",
+        "fideloper/proxy": "~4.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.54",

@@ -17,7 +17,7 @@
             <p>Từ ngày:<input type="date" id="date1" name="date1" class="form-control"></p>
         </div>
         <div class="col-md-2">
-            <p>Đến ngày:<input type="date" id="date2" name="date2" class="form-control"></p>
+            <p>Đến ngày:<input type="date" name="date2" class="form-control"></p>
         </div><br>
         <button id ="btn_search" class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span></button><a href="{{URL::to('dashboard/')}}" type="button" class="btn btn-success"><span class = "glyphicon glyphicon-refresh"><span></a>
     </form>

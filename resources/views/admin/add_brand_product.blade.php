@@ -24,13 +24,13 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô Tả Thương Hiệu</label>
-                            <textarea  style="resize: none" rows="8" name="brand_product_desc" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả"></textarea>
+                            <input style="resize: none" rows="8" name="brand_product_desc" class="form-control" id="exampleInputPassword1" placeholder="Nội dung mô tả">
                         </div>
                         <div class="form-group">
                            
                             <select name="brand_product_status" class="form-control input-lg m-bot15">
-                                <option value="0">ẩn </option>
                                 <option value="1">hiện</option>
+                                <option value="0">ẩn </option>
                               
                             </select>
                         </div>

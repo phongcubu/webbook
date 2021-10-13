@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Models\CatePost;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Brian2694\Toastr\Toastr;
 session_start();
 class BrandProduct extends Controller
 {
@@ -56,7 +57,8 @@ class BrandProduct extends Controller
 
     // lưu dữ liệu vào database
         DB::table('tbl_brand')->insert($data);
-        Session::put('message', " thêm thương hiệu  thành công!");
+       
+        \Toastr::success('Thêm thương hiệu  thành công!','Thành Công');
         return Redirect::to("add-brand-product");
 
     }
@@ -66,14 +68,17 @@ class BrandProduct extends Controller
     {   $this->AuthLogin();
         DB::table('tbl_brand')->where('brand_id',$brand_product_id)->update(['brand_status' =>1]);
         
-        Session::put('message', " kích hoạt thương hiệu thành công!");
+        // Session::put('message', " kích hoạt thương hiệu thành công!");
+        \Toastr::success('Kích hoạt thương hiệu thành công!','Thành Công');
         return Redirect::to("all-brand-product");
     }
     public function unactive_brand_product($brand_product_id)
     {   $this->AuthLogin();
         DB::table('tbl_brand')->where('brand_id',$brand_product_id)->update(['brand_status' =>0]);
         
-        Session::put('message', " Không kích hoạt  thương hiệu thành công!");
+        // Session::put('message', " Không kích hoạt  thương hiệu thành công!");
+        \Toastr::success('Không kích hoạt thương hiệu thành công!','Thành Công');
+
         return Redirect::to("all-brand-product");
     }
 
@@ -86,14 +91,15 @@ class BrandProduct extends Controller
         $manager_brand_product = view('admin.edit_brand_product')->with('edit_brand_product',$edit_brand_product);
         return view('admin_layout')->with('admin.edit_brand_product',$manager_brand_product);
     }
-    public function delete_brand_product($brand_product_id)
-    {  $this->AuthLogin();
-        DB::table('tbl_brand')->where('brand_id',$brand_product_id)->update(['brand_status' =>0]);
-        
-        Session::put('message', " Không kích hoạt  thương hiệu thành công!");
-        return Redirect::to("all-brand-product");
-    }
 
+    // --- hàm xóa thương hiệu sản phẩm 
+    public function deletee_brand_product($brand_product_id){
+        $this->AuthLogin();
+            DB::table('tbl_brand')->where('brand_id',$brand_product_id)->delete();
+            \Toastr::success('Xóa thương hiệu thành công!','Thành Công');
+            return Redirect::to("all-brand-product");
+    
+        }
     // --- hàm Cập nhât thương hiệu 
     public function update_brand_product(Request $request,$brand_product_id){
         $this->AuthLogin();
@@ -102,22 +108,15 @@ class BrandProduct extends Controller
             // tên lấy theo cột dữ liệu = tên lấy theo name ở 'add_brand_prodcut' view.
             $data['brand_name'] = $request->brand_product_name;
             $data['brand_desc'] = $request->brand_product_desc;
-    
+
         // lưu dữ liệu vào database
             DB::table('tbl_brand')->where('brand_id',$brand_product_id)->update($data);
-            Session::put('message', " cập nhật thương hiệu thành công!");
+            \Toastr::success('Cập nhật thương hiệu thành công!','Thành Công');
+            
             return Redirect::to("all-brand-product");
     
         }
     
-    // --- hàm xóa thương hiệu sản phẩm 
-    public function deletee_brand_product($brand_product_id){
-        $this->AuthLogin();
-            DB::table('tbl_brand')->where('brand_id',$brand_product_id)->delete();
-            Session::put('message', " Xóa thương hiệu thành công!");
-            return Redirect::to("all-brand-product");
-    
-        }
 
     ////kết thúc hàm admin page
     public function show_brand_home($brand_id){

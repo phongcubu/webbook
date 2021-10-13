@@ -38,7 +38,8 @@
               @else
                 <td>Thanh toán qua khi nhận hàng</td>
               @endif
-              <td>{{$order->order_total}}</td>
+            <td>{{number_format((float)$order->order_total, 3).''.'vnđ'}}</td>
+          
               <td>{{$order->order_status}}<td>
               <td> 
                   <a href="{{URL::to('view-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">

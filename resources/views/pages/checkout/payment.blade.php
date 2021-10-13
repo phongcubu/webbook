@@ -39,7 +39,7 @@
                         </td>
                         <td class="cart_description">
                            
-                            <h4><a href=""></a>{{$v_content->name}}</h4> 
+                            <h4 style="width: 195px;text-align: left;"><a href=""></a>{{$v_content->name}}</h4> 
                             <p>mã sản phẩm:{{$v_content->id}}</p>
                         </td>
                         <td class="cart_price">

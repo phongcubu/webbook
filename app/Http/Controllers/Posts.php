@@ -30,7 +30,7 @@ class Posts extends Controller
      //-- hàm  thêm thương hiệu sản phẩm
     public function add_post(){
         $this->AuthLogin();
-        $this->AuthLogin();
+      
         $cate_post = CatePost::orderBy('category_post_id','DESC')->get(); 
        
         return view('admin.post.add_post')->with(compact('cate_post'));
@@ -62,10 +62,12 @@ class Posts extends Controller
             $post->post_image = $new_image;
 
            	$post->save();
-            Session::put('message','Thêm bài viết thành công');
+          
+            \Toastr::success('Thêm bài viết thành công!','Thành Công');
             return redirect()->back();
         }else{
-        	Session::put('message','Làm ơn thêm hình ảnh');
+        
+            \Toastr::error('Làm ơn thêm hình ảnh!','Thành Công');
             return redirect()->back();
         }
 
@@ -90,8 +92,7 @@ class Posts extends Controller
         }
         $post->delete();
         
-       
-        Session::put('message','Xóa bài viết thành công');
+        \Toastr::success('Xóa bài viết thành công!','Thành Công');
         return redirect()->back();
     }
     public function edit_post($post_id){
@@ -127,7 +128,7 @@ class Posts extends Controller
     }
 
      $post->save();
-     Session::put('message','Cập nhật bài viết thành công');
+     \Toastr::success('Cập nhật bài viết thành công!','Thành Công');
      return redirect()->back();
     }
     public function danh_muc_bai_viet(Request $request, $category_post_slug){
