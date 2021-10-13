@@ -139,8 +139,13 @@
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="{{URL::to('trang-chu')}}" class="active">Trang Chủ</a></li>
-                              
-                                <li ><a href="#">Tin Tức</a></li> 
+                                <li ><a href="#">Tin Tức <i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                        @foreach($cate_post as $key => $post)
+                                        <li><a href="{{URL::to('danh-muc-bai-viet/'.$post->category_post_slug)}}">{{$post->category_post_name}}</a></li>
+                                    @endforeach  
+                                    </ul>
+                                </li> 
                                 
                                 <li><a href="{{URL::to('contact')}}">Liên Hệ</a></li>
                             </ul>

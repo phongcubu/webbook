@@ -43,7 +43,6 @@ Route::get('dashboard/',[AdminController::class, 'show_dashboard']);
 Route::get('logout/', [AdminController::class, 'logout'])->name('logout');
 // vào trang chủ bảng điều khiển khi login
 Route::post('admin-dashbord/',[AdminController::class, 'dashboard'])->name('admin-dashbord');
-
 // -------------Contact
 Route::get('contact-form/', [ContactController::class, 'contactForm'])->name('contact-form');
 Route::post('contact-form/', [ContactController::class, 'storeContactForm'])->name('contact-form.store');

@@ -295,35 +295,25 @@
         <div class="footer-widget">
             <div class="container">
                 <div class="row ">
-                    <div class="col-sm-2 ">
+                    <div class="col-sm-3 ">
                         <div class="single-widget ">
                             <h2>Hỗ Trợ-Dịch Vụ</h2>
                             <ul class="nav nav-pills nav-stacked ">
-                                <li><a href="# ">Mua hàng trả góp</a></li>
-                                <li><a href="# ">Chính sách bảo hành</a></li>
-                                <li><a href="# ">Tra cứu đơn hàng</a></li>
-                                <li><a href="# ">Chính sách bảo mật</a></li>
-                                <li><a href="# ">Điều khoản mua bán hàng hóa</a></li>
+                                <li><a href="{{URL::to('contact-form')}}">Mua hàng trả góp</a></li>
+                                <li><a href="{{URL::to('contact-form')}}">Chính sách bảo hành</a></li>
+                                <li><a href="{{URL::to('contact-form')}}">Tra cứu đơn hàng</a></li>
+                                <li><a href="{{URL::to('contact-form')}}">Chính sách bảo mật</a></li>
+                                <li><a href="{{URL::to('contact-form')}}">Điều khoản mua bán hàng hóa</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-sm-2 ">
+                    <div class="col-sm-3 ">
                         <div class="single-widget ">
                             <h2>Thông Tin Liên Hệ</h2>
                             <ul class="nav nav-pills nav-stacked ">
-                                <li><a href="# ">Bán hàng Online</a></li>
-                                <li><a href="# ">Chăm sóc Khách Hàng</a></li>
-                                <li><a href="# ">Hỗ Trợ Kỹ thuật</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 ">
-                        <div class="single-widget ">
-                            <h2>Hệ thống 75 siêu thị trên toàn quốc
-                            </h2>
-                            <ul class="nav nav-pills nav-stacked ">
-                                <li><a href="# ">Danh sách 75 siêu thị trên toàn quốc</a></li>
-
+                                <li><a href="{{URL::to('contact-form')}}">Bán hàng Online</a></li>
+                                <li><a href="{{URL::to('contact-form')}}">Chăm sóc Khách Hàng</a></li>
+                                <li><a href="{{URL::to('contact-form')}}">Hỗ Trợ Kỹ thuật</a></li>
                             </ul>
                         </div>
                     </div>

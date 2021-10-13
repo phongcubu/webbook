@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests;
+use App\Models\Statistic;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -24,8 +26,6 @@ class AdminController extends Controller
         }
 
     }
-
-
     // hàm hiển thi login
     public function index(){
         return view('admin_login');
@@ -82,15 +82,13 @@ class AdminController extends Controller
         return redirect('admin-login/');
     }
 
-     // --hàm xử lí liệt kê ra thương hiệu sản phảm
+     // --hàm xử lí liệt kê ra khách hàng
     public function all_user(){
         $this->AuthLogin();
         // lấy data từ bảng 
         $all_user = DB::table('tbl_customers')->paginate(5);
-       
         return view('admin.all_user')->with('all_user',  $all_user);
     }
-
 
 }
 ?>

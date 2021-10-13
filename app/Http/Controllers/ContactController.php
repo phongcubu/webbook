@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 // use Illuminate\Contracts\Session\Session;
+use App\Models\CatePost;
 use Illuminate\Support\Facades\Session;
 use Mail;
 session_start();
@@ -13,7 +14,11 @@ class ContactController extends Controller
 {
     public function contactForm()
     {
-        return view('pages.contact.contacts');
+        $cate_product = DB::table('tbl_category_product')->where('category_status','1')->orderBy('category_id','desc')->get();
+        $brand_product = DB::table('tbl_brand')->where('brand_status','1')->orderBy('brand_id','desc')->get();
+       //category post
+        $category_post = CatePost::orderBy('category_post_id','DESC')->get();
+        return view('pages.contact.contacts')->with('category',$cate_product)->with('brand',$brand_product)->with('cate_post',$category_post);
     }
 
     public function storeContactForm(Request $request)
