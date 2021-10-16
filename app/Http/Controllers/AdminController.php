@@ -50,13 +50,11 @@ class AdminController extends Controller
     //  hàm login hiển thị trang điều khiển khi đăng nhập thành công
     public function dashboard(Request $request){
         $this->AuthLogin();
-
         // biến admin_email sẽ lây tên trường admin trong form admin_login.blade.php
         $admin_email = $request->admin_email;
         $admin_password= md5($request->admin_password);
         // vào bảng  trong csdl , vs điều kiện admin_email = biến $admin_email. first: chỉ lấy 1 user
         $result = DB::table('tbl_admin')->where('admin_email',$admin_email)->where('admin_password',$admin_password)->first();
-
         //  nếu được ($result) đăng nhập thành công lấy tên người dùng và id của họ
         //  chuyển vào trang điều khiển
         if($result){

@@ -13,7 +13,6 @@ session_start();
 class BrandProduct extends Controller
 {
     // hàm đăng nhập admin
-   
     public function AuthLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id)
@@ -57,8 +56,7 @@ class BrandProduct extends Controller
 
     // lưu dữ liệu vào database
         DB::table('tbl_brand')->insert($data);
-       
-        \Toastr::success('Thêm thương hiệu  thành công!','Thành Công');
+        \Toastr::success('Thêm thương hiệu thành công!','Thành Công');
         return Redirect::to("add-brand-product");
 
     }
@@ -78,7 +76,6 @@ class BrandProduct extends Controller
         
         // Session::put('message', " Không kích hoạt  thương hiệu thành công!");
         \Toastr::success('Không kích hoạt thương hiệu thành công!','Thành Công');
-
         return Redirect::to("all-brand-product");
     }
 
